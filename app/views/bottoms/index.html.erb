@@ -1,0 +1,17 @@
+<h3>Bottoms </h3>
+
+<% @bottoms.each do |bottom|%>
+<div class="large-8 columns">
+  <div class="row">
+
+    <div class="large-4 small-6 columns">
+      <img src="<%= bottom.pic %>">
+
+      <div class="panel">
+        <h5><%= link_to "Show more", bottom %></h5>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

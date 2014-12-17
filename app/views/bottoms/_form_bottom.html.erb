@@ -1,0 +1,20 @@
+<%= form_for (@bottom) do |f| %>
+
+
+
+  <div class="large-8 columns">
+  <td>
+    <%= f.label :bottom_type %><br />
+    <%= f.select :bottom_type, options_for_select(%w[Jeans Skirt Shorts Pants]) %>
+  <td>
+
+
+
+  <tr>
+      <%= f.label :pic %><br />
+      <%= f.file_field :pic %>
+
+  </tr>
+  <p><%= f.submit %></p>
+<% end %>
+</div>
