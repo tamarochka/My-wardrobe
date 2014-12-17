@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217034442) do
+ActiveRecord::Schema.define(version: 20141217173548) do
 
   create_table "bottoms", force: true do |t|
     t.string "bottom_type", null: false
     t.string "pic",         null: false
+    t.string "color"
   end
 
   create_table "tops", force: true do |t|
-    t.string "type", null: false
-    t.string "pic",  null: false
+    t.string "pic",      null: false
+    t.string "color"
+    t.string "top_type"
   end
 
 end

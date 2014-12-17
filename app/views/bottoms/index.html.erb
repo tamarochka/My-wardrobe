@@ -1,17 +1,29 @@
-<h3>Bottoms </h3>
-
-<% @bottoms.each do |bottom|%>
 <div class="large-8 columns">
   <div class="row">
+    <% @bottoms.each do |bottom|%>
 
     <div class="large-4 small-6 columns">
-      <img src="<%= bottom.pic %>">
+      <a href = "/bottoms/<%= bottom.id %>"><img src="<%= bottom.pic %>" width="100" height="100"/></a>
 
       <div class="panel">
-        <h5><%= link_to "Show more", bottom %></h5>
-
+        <h5>Item Name</h5>
+        <h6 class="subheader">
+          <ul>
+            <li><%= link_to "Edit", edit_bottom_path(bottom) %></li>
+            <li><%= link_to 'Delete', bottom, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </h6>
       </div>
     </div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
   </div>
-</div>
-<% end %>
