@@ -1,5 +1,6 @@
 class Top < ActiveRecord::Base
   mount_uploader :pic, PicUploader
+  has_many :outfits
 
   def name
     self.color + self.top_type

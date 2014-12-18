@@ -1,0 +1,30 @@
+<div class="large-8 columns">
+  <div class="row">
+    <% @outfits.each do |outfit|%>
+
+    <div class="large-4 small-6 columns">
+      <a href = "/outfits/<%= outfit.id %>"><div class="row"><img src= "<%= outfit.top.pic %>" width="200" height="200" /></div>
+      <div class="row"><img src= "<%= outfit.bottom.pic %>"width="200" height="200" /></div></a>
+
+      <div class="panel">
+        <h5>Item Name</h5>
+        <h6 class="subheader">
+          <ul>
+            <li><%= link_to "Edit", edit_outfit_path(outfit) %></li>
+            <li><%= link_to 'Delete', top, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </h6>
+      </div>
+    </div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+  </div>

@@ -1,0 +1,12 @@
+<div class ="large-2 column">
+  <div class="row"><img src= "<%= @outfit.top.pic %>" width="200" height="200" /></div>
+  <div class="row"><img src= "<%= @outfit.bottom.pic %>"width="200" height="200" /></div>
+</div>
+<div class="large-6 column"><%= form_for(@outfit) do |f| %>
+  <p><%=f.hidden_field :top_id, value: @outfit.top_id %></p>
+  <p><%=f.hidden_field :bottom_id, value: @outfit.bottom_id %></p>
+
+
+  <p><%= f.submit %></p>
+  <% end %>
+</div>
