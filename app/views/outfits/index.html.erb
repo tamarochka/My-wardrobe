@@ -7,11 +7,11 @@
       <div class="row"><img src= "<%= outfit.bottom.pic %>"width="200" height="200" /></div></a>
 
       <div class="panel">
-        <h5>Item Name</h5>
+        
         <h6 class="subheader">
           <ul>
             <li><%= link_to "Edit", edit_outfit_path(outfit) %></li>
-            <li><%= link_to 'Delete', top, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to 'Delete', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
         </h6>
       </div>

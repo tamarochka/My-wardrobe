@@ -41,9 +41,9 @@ class OutfitsController < ApplicationController
   end
 
   def destroy
-    @top = Top.find(params[:id])
-    @top.destroy
-    redirect_to tops_path
+    @outfit = Outfit.find(params[:id])
+    @outfit.destroy
+    redirect_to outfits_path
   end
 
 
