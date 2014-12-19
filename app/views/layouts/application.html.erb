@@ -18,21 +18,24 @@
         <div class="large-12 columns">
 
           <nav class="top-bar" data-topbar>
-            <ul class="title-area">
 
-              <li class="name">
-                <h1>
-                  <a href="#">
-                    Top Bar Title
-                  </a>
-                </h1>
-              </li>
-              <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+            <ul class="right">
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+
+
+
             </ul>
 
             <section class="top-bar-section">
 
-              <ul class="right">
+              <ul class="left">
                 <li class="divider"></li>
                 <li class="has-dropdown">
                   <a href="#">My Closet</a>
@@ -86,7 +89,12 @@
 
 
 
-
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
         <%= yield %>
 
