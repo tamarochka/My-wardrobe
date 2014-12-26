@@ -6,6 +6,7 @@ class TopsController < ApplicationController
 
   def new
     @top = Top.new
+
   end
 
   def create
@@ -20,6 +21,7 @@ class TopsController < ApplicationController
 
   def show
     @top = Top.find(params[:id])
+    #  binding.pry
   end
 
   def edit
@@ -44,7 +46,7 @@ class TopsController < ApplicationController
   private
 
   def top_params
-    params.require(:top).permit(:top_type, :pic, :color)
+    params.require(:top).permit(:top_type, :pic, :color, :user_id)
   end
 
 end

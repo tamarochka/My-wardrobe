@@ -5,27 +5,33 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    offset = rand(Top.count)
-    rand_top = Top.offset(offset).first
-    offset = rand(Bottom.count)
-    rand_bottom = Bottom.offset(offset).first
-    @outfit = Outfit.new(top_id: rand_top.id,bottom_id: rand_bottom.id )
-
+      @outfit = Outfit.new(top_id: generate_clean_top.id,bottom_id: generate_clean_bottom.id )
   end
 
   def create
 
   @outfit = Outfit.new(top_id: params["outfit"][:top_id],bottom_id: params["outfit"][:bottom_id])
     if @outfit.save
-      flash[:notice] = "Your item was submitted!"
+      #change worn outfit condition
+      @outfit.top.update(:condition => "dirty")
+      @outfit.bottom.update( :condition => "dirty")
+
+      #update two week old outfit condition
+      outfit_to_clean = Outfit.where("created_at = ?", 1.week.ago.utc)
+      if outfit_to_clean.any?
+        outfit_to_clean[0].top.update(:condition => "clean")
+        outfit_to_clean[0].bottom.update(:condition => "clean")
+      end
+      flash[:notice] = "Your outfit was saved!"
     else
        flash.now[:notice] = "There were problems processing your order!"
     end
+
     redirect_to outfits_path
   end
 
   def show
-    @outfit = Outfit.new(top_id: rand(Top.count),bottom_id: rand(Bottom.count) )
+    @outfit = Outfit.find(params[:id])
   end
 
   def edit
@@ -51,6 +57,32 @@ class OutfitsController < ApplicationController
 
   def top_params
     params.require(:top).permit(:top_type, :pic, :color)
+  end
+
+  def rand_top
+    offset = rand(Top.count)
+    rand_top = Top.offset(offset).first
+  end
+
+  def rand_bottom
+    offset = rand(Bottom.count)
+    rand_bottom = Bottom.offset(offset).first
+  end
+
+  def generate_clean_top
+    top = rand_top
+    while top.condition == "dirty" do
+      top = rand_top
+    end
+    top
+  end
+
+  def generate_clean_bottom
+    bottom = rand_bottom
+    while bottom.condition == "dirty" do
+      bottom = rand_bottom
+    end
+    bottom
   end
 
 end
