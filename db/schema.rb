@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226041839) do
+ActiveRecord::Schema.define(version: 20141227041821) do
 
   create_table "bottoms", force: true do |t|
     t.string  "bottom_type",                   null: false
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 20141226041839) do
     t.integer  "bottom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "searches", force: true do |t|
+    t.string "keywords"
   end
 
   create_table "tops", force: true do |t|

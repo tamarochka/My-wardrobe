@@ -1,0 +1,6 @@
+<% form_tag search_path, :method => :get do %>
+    <p id="search_header">
+        <%= text_field_tag 'q', params[:q], {:size => 40} %>
+        <%= submit_tag 'Search', :name => nil %>
+        </p>
+    <% end %>
