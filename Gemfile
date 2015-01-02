@@ -31,14 +31,8 @@ gem 'pry'
 gem 'foundation-rails'
 gem 'devise'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'rspec-rails', group: [:development, :test]
+gem 'capybara', group: [:development, :test]
+gem 'launchy', group: [:development, :test]
+gem 'factory_girl', group: [:development, :test]
