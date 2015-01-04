@@ -4,7 +4,6 @@ class Bottom < ActiveRecord::Base
   belongs_to :user
 
   def name
-    self.color + self.bottom_type
+    "#{self.color} #{self.bottom_type}"
   end
-
 end

@@ -10,24 +10,23 @@ class OutfitsController < ApplicationController
 
   def create
 
-  @outfit = Outfit.new(top_id: params["outfit"][:top_id],bottom_id: params["outfit"][:bottom_id])
-    if @outfit.save
+  @outfit = Outfit.new(top_id: params["outfit"][:top_id], bottom_id: params["outfit"][:bottom_id])
+    if params[:preview_button] || !@outfit.save
+      render :action => 'new'
+    else
       #change worn outfit condition
       @outfit.top.update(:condition => "dirty")
       @outfit.bottom.update( :condition => "dirty")
 
-      #update two week old outfit condition
+      #update one week old outfit condition
       outfit_to_clean = Outfit.where("created_at = ?", 1.week.ago.utc)
       if outfit_to_clean.any?
         outfit_to_clean[0].top.update(:condition => "clean")
         outfit_to_clean[0].bottom.update(:condition => "clean")
       end
       flash[:notice] = "Your outfit was saved!"
-    else
-       flash.now[:notice] = "There were problems processing your order!"
+      redirect_to outfits_path
     end
-
-    redirect_to outfits_path
   end
 
   def show
@@ -36,14 +35,6 @@ class OutfitsController < ApplicationController
 
   def edit
     @outfit = Outfit.find(params[:id])
-  end
-
-  def update
-    @top = Top.find(params[:id])
-    if @top.update(top_params)
-      flash.now[:notice] = "Your item was updated"
-    end
-    redirect_to top_path
   end
 
   def destroy

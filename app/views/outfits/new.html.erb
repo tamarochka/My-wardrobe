@@ -1,34 +1,33 @@
 <div class ="large-8 column">
-  <div class="row">
-
-</div>
   <div class="large-6 small-2 column" >
-    <div class =-"row">
-      <img src= "<%= @outfit.top.pic %>" width="200" height="200" />
-    </div>
-    <div class ="row"><img src= "<%= @outfit.bottom.pic %>"width="200" height="200" />
-    </div>
-      <%= form_for(@outfit) do |f| %>
-    <p><%=f.hidden_field :top_id, value: @outfit.top_id %></p>
-    <p><%=f.hidden_field :bottom_id, value: @outfit.bottom_id %></p>
-    <div class="row"><%= f.submit "That will work!", :class => "button small" %></div>
-    <%end%>
+    <% if params[:preview_button] %>
+    <p><a href = "/outfits/new">Go Back</a></p>
+      <div class ="row">
+            <img src= "<%= @outfit.top.pic %>" width="200" height="200" />
+          </div>
+          <div class ="row"><img src= "<%= @outfit.bottom.pic %>"width="200" height="200" />
+          </div>
+    <%else%>
+      <div class =-"row">
+        <img src= "<%= @outfit.top.pic %>" width="200" height="200" />
+      </div>
+      <div class ="row"><img src= "<%= @outfit.bottom.pic %>"width="200" height="200" />
+      </div>
     <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a>
-</div>
+<% end %>
+    </div>
   </div>
-      <div class ="large-6 small-2 column">
-        <% @outfit.errors.full_messages.each do |msg| %>
+  <div class ="large-6 small-2 column">
+      <% @outfit.errors.full_messages.each do |msg| %>
           <%= msg %>
         <% end %>
-        <h5>Manually adjust outfit<h5>
         <%= form_for @outfit do |f| %>
           <%= f.label :top_id, 'Top' %>
-            <%= f.collection_select(:top_id, Top.all, :id, :name) %>
+          <%= f.collection_select(:top_id, Top.all, :id, :name) %>
 
-            <%= f.label :bottom_id, 'Bottom' %>
-            <%= f.collection_select(:bottom_id, Bottom.all, :id, :name) %>
-
-          <%= f.submit "Add Outfit",:class => "button small" %>
+          <%= f.label :bottom_id, 'Bottom' %>
+          <%= f.collection_select(:bottom_id, Bottom.all, :id, :name) %>
+          <%= f.submit 'Create Outfit', :class => "button small" %>
+          <%= f.submit 'Preview', :name => 'preview_button', :class => "button small" %>
         <% end %>
-      <p><a href = "/outfits">See all outfits</a></p>
 </div>
