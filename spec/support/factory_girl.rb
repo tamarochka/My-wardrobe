@@ -8,8 +8,9 @@ FactoryGirl.define do
   end
 
   factory :top do
-    type 'sweater'
+    top_type 'sweater'
     color 'white'
+    pic 'link/to/picture'
   end
 
 end

@@ -16,11 +16,11 @@ feature 'User adds a new top', %Q{
     visit '/tops/new'
     select 'sweater', from: 'type'
     select 'white', from: 'color'
-    # fill_in 'Pic', with: top.pic
+    fill_in 'Pic', with: top.pic
     click_button 'Create Top'
 
     expect(page).to have_content 'New top successfully added'
-    expect(page).to have_content top.type
+    expect(page).to have_content top.top_type
     # expect(page).to have_content top.pic
   end
 end
