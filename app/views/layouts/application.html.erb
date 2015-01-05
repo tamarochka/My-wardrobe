@@ -86,6 +86,15 @@
             </h5>
           </div>
 
+          <div class="search">
+              <p>
+                <%= form_tag searches_path, :method => :get do %>
+                    <%= text_field_tag 'keywords', params[:keywords] %>
+                    <%= submit_tag "Search", class: "small button" %>
+                  <%end%>
+              </p>
+          </div>
+
 
 
         </div>
