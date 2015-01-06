@@ -6,7 +6,7 @@
       <a href = "/bottoms/<%= bottom.id %>"><img src="<%= bottom.pic %>" width="200" height="200"/></a>
 
       <div class="panel">
-        <h5>Item Name</h5>
+        <h5><%= bottom.name %></h5>
         <h6 class="subheader">
           <ul>
             <li><%= link_to "Edit", edit_bottom_path(bottom) %></li>

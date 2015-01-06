@@ -12,15 +12,17 @@ feature 'User adds a new top', %Q{
   end
 
   scenario 'with valid data' do
-    top = FactoryGirl.create(:top)
+
+    @my_file = FactoryGirl.create(:my_file)
+
     visit '/tops/new'
-    select 'sweater', from: 'type'
-    select 'white', from: 'color'
-    fill_in 'Pic', with: top.pic
+    select 'Sweater', from: 'Top type'
+    select 'White', from: 'Color'
+    attach_file ("My file", 'spec/fixtures/myfiles/myfile.jpg')
     click_button 'Create Top'
 
     expect(page).to have_content 'New top successfully added'
     expect(page).to have_content top.top_type
-    # expect(page).to have_content top.pic
+    expect(page).to have_xpath "/uploads/top/pic/#{params[:id]}/myfile.jpg"
   end
 end

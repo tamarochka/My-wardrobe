@@ -30,9 +30,11 @@ gem 'carrierwave'
 gem 'pry'
 gem 'foundation-rails'
 gem 'devise'
+gem "fog"
 
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
 gem 'factory_girl', group: [:development, :test]
+gem 'dotenv-rails', :groups => [:development, :test]

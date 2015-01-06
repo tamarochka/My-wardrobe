@@ -7,6 +7,11 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :my_file do
+    photo Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/myfile.jpg')))
+  end
+
+
   factory :top do
     top_type 'sweater'
     color 'white'
