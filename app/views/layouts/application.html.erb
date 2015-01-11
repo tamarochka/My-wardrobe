@@ -20,15 +20,19 @@
           <nav class="top-bar" data-topbar>
 
             <section class="top-bar-section">
-                  <ul class="right">
-                    <%- if current_user -%>
-                      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-                      <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-                    <%- else -%>
-                      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-                      <li><%= link_to 'Sign In', new_user_session_path %></li>
-                    <%- end -%>
-                  </ul>
+              <ul class="right">
+
+                <%- if current_user -%>
+                <li><img src="<%= current_user.profile_photo %>" width="30" height="30"></li>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                <li class="divider"></li>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path(@user)%></li>
+                <%- else -%>
+                <li><%= link_to 'Sign Up', new_user_registration_path%></li>
+                <li class="divider"></li>
+                <li><%= link_to 'Sign In', new_user_session_path %></li>
+                <%- end -%>
+              </ul>
                 </section>
 
             <section class="top-bar-section">

@@ -1,7 +1,7 @@
 class BottomsController < ApplicationController
 
   def index
-    @bottoms = Bottom.all
+    @bottoms = current_user.bottoms.all # limit to 20 or paginate 
   end
 
   def new
