@@ -23,7 +23,6 @@
               <ul class="right">
 
                 <%- if current_user -%>
-                <li><img src="<%= current_user.profile_photo %>" width="30" height="30"></li>
                 <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
                 <li class="divider"></li>
                 <li><%= link_to 'Edit Profile', edit_user_registration_path(@user)%></li>
