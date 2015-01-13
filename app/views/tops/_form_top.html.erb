@@ -1,3 +1,9 @@
+<% if @top.errors.any? %>
+  <% @top.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
 <%= form_for(@top) do |f| %>
 
 
@@ -5,12 +11,12 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :top_type %><br />
-    <%= f.select :top_type, options_for_select(%w[Sweater T-shirt Cami Blouse Cardigan Top]) %>
+    <%= f.select :top_type, options_for_select(%w[Sweater T-shirt Cami Blouse Cardigan Top]),include_blank: true %>
   <p>
 
   <p>
       <%= f.label :color %><br />
-      <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]) %>
+      <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]),include_blank: true %>
 
   </p>
 

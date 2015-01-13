@@ -14,11 +14,12 @@ class TopsController < ApplicationController
     @top.user = current_user
 
     if @top.save
-      flash[:notice] = "Your item was submitted!"
+      flash[:notice] = "New top successfully added!"
+      redirect_to tops_path
     else
        flash.now[:notice] = "There were problems processing your order!"
+       render :new
     end
-    redirect_to tops_path
   end
 
   def show
