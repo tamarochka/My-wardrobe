@@ -11,6 +11,13 @@ FactoryGirl.define do
   factory :top do
     top_type 'Sweater'
     color 'white'
+    pic "public/uploads/top/example.jpg"
+  end
+
+  factory :bottom do
+    bottom_type 'Shorts'
+    color 'Blue'
+    pic "public/uploads/bottom/example.jpg"
   end
 
 end

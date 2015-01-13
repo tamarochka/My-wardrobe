@@ -1,7 +1,7 @@
 class BottomsController < ApplicationController
 
   def index
-    @bottoms = current_user.bottoms.all # limit to 20 or paginate 
+    @bottoms = current_user.bottoms.all # limit to 20 or paginate
   end
 
   def new
@@ -11,11 +11,12 @@ class BottomsController < ApplicationController
   def create
     @bottom = Bottom.new(bottom_params)
     if @bottom.save
-      flash[:notice] = "Your item was submitted!"
+      flash[:notice] = "New bottom successfully added!"
+      redirect_to bottoms_path
     else
        flash.now[:notice] = "There were problems processing your order!"
+       render :new
     end
-    redirect_to bottoms_path
   end
 
   def show

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'User adds a new top', %Q{
   As an authenticated user
-  I want to add a new weather
-  So that others can review it
+  I want to add a new top
+  So that i can use it in outfit
   } do
 
   before :each do
@@ -37,7 +37,6 @@ feature 'User adds a new top', %Q{
     expect(page).to have_content "Top type can't be blank"
     expect(page).to have_content "Pic can't be blank"
     expect(page).to have_content "Color can't be blank"
-
 
   end
 
