@@ -7,6 +7,8 @@ class Top < ActiveRecord::Base
   validates :color, presence: true
   validates :pic, presence: true
 
+  paginates_per 6
+
   def name
     "#{self.color} #{self.top_type}"
   end

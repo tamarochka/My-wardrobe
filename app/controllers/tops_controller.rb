@@ -2,7 +2,7 @@ class TopsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tops = current_user.tops
+    @tops = current_user.tops.page(params[:page])
   end
 
   def new
@@ -24,7 +24,6 @@ class TopsController < ApplicationController
 
   def show
     @top = current_user.tops.find(params[:id])
-    #  binding.pry
   end
 
   def edit
@@ -40,11 +39,8 @@ class TopsController < ApplicationController
   end
 
   def destroy
-    @top = current.tops.find(params[:id])
-    # is the equivalent of:
-    #
+    @top = current_user.tops.find(params[:id])
     # @top = Top.where(id: params[:id], user: current_user).first
-
     @top.destroy
     redirect_to tops_path
   end

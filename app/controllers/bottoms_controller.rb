@@ -1,7 +1,8 @@
 class BottomsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @bottoms = current_user.bottoms.all # limit to 20 or paginate
+    @bottoms = current_user.bottoms.all.page(params[:page]) # limit to 20 or paginate
   end
 
   def new
@@ -10,6 +11,7 @@ class BottomsController < ApplicationController
 
   def create
     @bottom = Bottom.new(bottom_params)
+    @bottom.user = current_user
     if @bottom.save
       flash[:notice] = "New bottom successfully added!"
       redirect_to bottoms_path
@@ -20,15 +22,15 @@ class BottomsController < ApplicationController
   end
 
   def show
-    @bottom = Bottom.find(params[:id])
+    @bottom = current_user.bottoms.find(params[:id])
   end
 
   def edit
-    @bottom = Bottom.find(params[:id])
+    @bottom = current_user.bottoms.find(params[:id])
   end
 
   def update
-    @bottom = Bottom.find(params[:id])
+    @bottom = current_user.bottoms.find(params[:id])
     if @bottom.update(bottom_params)
       flash.now[:notice] = "Your item was updated"
       redirect_to bottom_path
@@ -36,7 +38,7 @@ class BottomsController < ApplicationController
   end
 
   def destroy
-    @bottom = Bottom.find(params[:id])
+    @bottom = current_user.bottoms.find(params[:id])
     @bottom.destroy
     redirect_to bottoms_path
   end
@@ -44,6 +46,6 @@ class BottomsController < ApplicationController
 private
 
 def bottom_params
-    params.require(:bottom).permit(:bottom_type, :pic, :color, :user_id)
+    params.require(:bottom).permit(:bottom_type, :pic, :color)
   end
 end

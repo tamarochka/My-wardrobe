@@ -1,7 +1,7 @@
 class OutfitsController < ApplicationController
 
   def index
-    @outfits = Outfit.all
+    @outfits = Outfit.all.page(params[:page])
   end
 
   def new

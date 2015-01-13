@@ -30,6 +30,7 @@ gem 'foundation-rails'
 gem 'devise'
 gem "fog"
 gem "pg"
+gem 'kaminari'
 
 
 gem 'rspec-rails', group: [:development, :test]
