@@ -14,11 +14,11 @@ class OutfitsController < ApplicationController
     if params[:preview_button] || !@outfit.save
       render :action => 'new'
     else
-      change worn outfit condition
+      #change worn outfit condition
       @outfit.top.update(:condition => "dirty")
       @outfit.bottom.update( :condition => "dirty")
 
-      update one week old outfit condition
+      #update one week old outfit condition
       outfit_to_clean = Outfit.where("created_at = ?", 1.week.ago.utc)
       if outfit_to_clean.any?
         outfit_to_clean[0].top.update(:condition => "clean")

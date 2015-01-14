@@ -7,13 +7,13 @@
         <% if outfit.top.nil? %>
           <div class="row"><%= image_tag "default.jpeg" %></div>
         <% else %>
-          <div class="row"><img src= "<%= outfit.top.pic %>" width="200" height="200" /></div>
+          <div class="row"><img src= "<%= outfit.top.image %>" width="200" height="200" /></div>
         <%end%>
 
         <% if outfit.bottom.nil? %>
           <div class="row"><%= image_tag "default.jpeg" %></div>
         <% else %>
-          <div class="row"><img src= "<%= outfit.bottom.pic %>"width="200" height="200" /></div></a>
+          <div class="row"><img src= "<%= outfit.bottom.image %>"width="200" height="200" /></div></a>
         <%end%>
 
       <div class="panel">
