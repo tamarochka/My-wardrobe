@@ -9,7 +9,7 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :bottom_type %><br />
-    <%= f.select :bottom_type, options_for_select(%w[Jeans Skirt Shorts Pants]), include_blank: true %>
+    <%= f.select :bottom_type, options_for_select( available_types), include_blank: true %>
   <p>
 
   <p>
@@ -17,9 +17,9 @@
       <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>
 
   </p>
-  
+
   <p>
-      <%= f.label :pic %><br />
+      <%= f.label :photo %><br />
       <%= f.file_field :pic %>
 
   </p>

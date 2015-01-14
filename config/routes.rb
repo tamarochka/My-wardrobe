@@ -5,6 +5,7 @@ resources :bottoms
 resources :tops
 resources :outfits
 resources :searches, only: [:index]
+resources :clothings
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PicUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
 
 
   if Rails.env.production? || Rails.env.development?

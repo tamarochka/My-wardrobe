@@ -1,0 +1,39 @@
+<% if @clothing.errors.any? %>
+  <% @clothing.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
+<%= form_for (@clothing) do |f| %>
+
+<div class="large-8 columns">
+  <p>
+    <%= f.label :clothing_type %><br />
+    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true %>
+  <p>
+
+  <p>
+    <%= f.label :clothing_style %><br />
+    <%= f.select :clothing_style, options_for_select(%w[Top Blouse Jeans Shorts Skirt Sweater]), include_blank: true %>
+  <p>
+
+  <p>
+      <%= f.label :color %><br />
+      <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>
+
+  </p>
+
+  <p>
+    <%= f.label :weather %><br />
+    <%= f.select :weather, options_for_select(%w[Cold Hot Any]), include_blank: true %>
+
+  </p>
+
+  <p>
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+
+  </p>
+  <p><%= f.submit %></p>
+  <% end %>
+</div>

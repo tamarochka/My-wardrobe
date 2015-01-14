@@ -6,11 +6,14 @@ class BottomsController < ApplicationController
   end
 
   def new
-    @bottom = Bottom.new
+    @bottom = Clothing.new #Bottom.new
+    @bottom.type = "bottom"
+
   end
 
   def create
     @bottom = Bottom.new(bottom_params)
+    # @clothing.type = "bottom"
     @bottom.user = current_user
     if @bottom.save
       flash[:notice] = "New bottom successfully added!"

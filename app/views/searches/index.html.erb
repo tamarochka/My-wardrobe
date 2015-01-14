@@ -7,6 +7,7 @@
         <h5><%= bottom.name %></h5>
         <h6 class="subheader">
           <ul>
+          <%= link_to bottom.name, bottom %>
             <li><%= link_to "Edit", edit_bottom_path(bottom) %></li>
             <li><%= link_to 'Delete', bottom, method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
