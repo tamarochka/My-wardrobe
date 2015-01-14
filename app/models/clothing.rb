@@ -1,6 +1,7 @@
 class Clothing < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :user
+  has_many :outfits
 
   paginates_per 6
 

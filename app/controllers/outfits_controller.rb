@@ -14,11 +14,11 @@ class OutfitsController < ApplicationController
     if params[:preview_button] || !@outfit.save
       render :action => 'new'
     else
-      #change worn outfit condition
+      change worn outfit condition
       @outfit.top.update(:condition => "dirty")
       @outfit.bottom.update( :condition => "dirty")
 
-      #update one week old outfit condition
+      update one week old outfit condition
       outfit_to_clean = Outfit.where("created_at = ?", 1.week.ago.utc)
       if outfit_to_clean.any?
         outfit_to_clean[0].top.update(:condition => "clean")
@@ -51,13 +51,13 @@ class OutfitsController < ApplicationController
   end
 
   def rand_top
-    offset = rand(Top.count)
-    rand_top = Top.offset(offset).first
+    offset = rand(Clothing.where(:clothing_type => "Top").count)
+    rand_top = Clothing.where(:clothing_type => "Top").offset(offset).first
   end
 
   def rand_bottom
-    offset = rand(Bottom.count)
-    rand_bottom = Bottom.offset(offset).first
+    offset = rand(Clothing.where(:clothing_type => "Bottom").count)
+    rand_bottom = Clothing.where(:clothing_type => "Bottom").offset(offset).first
   end
 
   def generate_clean_top
