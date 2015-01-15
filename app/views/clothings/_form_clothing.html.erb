@@ -8,29 +8,29 @@
 
 <div class="large-8 columns">
   <p>
-    <%= f.label :clothing_type %><br />
+    <%= f.label :clothing_type %>
     <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true %>
   <p>
 
   <p>
-    <%= f.label :clothing_style %><br />
+    <%= f.label :clothing_style %>
     <%= f.select :clothing_style, options_for_select(%w[Top Blouse Jeans Shorts Skirt Sweater]), include_blank: true %>
   <p>
 
   <p>
-      <%= f.label :color %><br />
+      <%= f.label :color %>
       <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>
 
   </p>
 
   <p>
-    <%= f.label :weather %><br />
+    <%= f.label :weather %>
     <%= f.select :weather, options_for_select(%w[Cold Hot Any]), include_blank: true %>
 
   </p>
 
   <p>
-      <%= f.label :image %><br />
+      <%= f.label :image %>
       <%= f.file_field :image %>
 
   </p>

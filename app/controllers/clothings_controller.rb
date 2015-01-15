@@ -12,7 +12,6 @@ class ClothingsController < ApplicationController
 
   def create
     @clothing = Clothing.new(clothing_params)
-    # @clothing.type = "bottom"
     @clothing.user = current_user
     if @clothing.save
       flash[:notice] = "New clothing was successfully added!"
@@ -24,11 +23,12 @@ class ClothingsController < ApplicationController
   end
 
   def show
-    # @bottom = current_user.bottoms.find(params[:id])
+    @clothing = current_user.clothings.find(params[:id])
   end
 
   def edit
     @clothing = current_user.clothings.find(params[:id])
+    # binding.pry
   end
 
   def update

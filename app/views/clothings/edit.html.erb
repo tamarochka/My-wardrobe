@@ -1,3 +1,43 @@
-<%= render "form_clothing" %>
+<% if @clothing.errors.any? %>
+  <% @clothing.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
+<%= form_for (@clothing) do |f| %>
+
+<div class="large-8 columns">
+  <p>
+    <%= f.label :clothing_type %>
+    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes])%>
+    <p>
+
+      <p>
+        <%= f.label :clothing_style %>
+        <%= f.select :clothing_style, options_for_select(%w[Top Blouse Jeans Shorts Skirt Sweater]) %>
+        <p>
+
+          <p>
+            <%= f.label :color %>
+            <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]) %>
+
+          </p>
+
+          <p>
+            <%= f.label :weather %>
+            <%= f.select :weather, options_for_select(%w[Cold Hot Any]) %>
+
+          </p>
+
+          <p>
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+
+          </p>
+          <p><%= f.submit %></p>
+          <% end %>
+        </div>
+
+
 
 <%= link_to "Back", clothings_path %>
