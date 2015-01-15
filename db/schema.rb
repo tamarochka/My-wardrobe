@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114184951) do
+ActiveRecord::Schema.define(version: 20150115162219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bottoms", force: true do |t|
-    t.string  "bottom_type",                   null: false
-    t.string  "pic",                           null: false
-    t.string  "color"
-    t.integer "user_id"
-    t.string  "condition",   default: "clean"
-  end
 
   create_table "clothings", force: true do |t|
     t.string   "clothing_type",                    null: false
@@ -41,18 +33,7 @@ ActiveRecord::Schema.define(version: 20150114184951) do
     t.integer  "bottom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "searches", force: true do |t|
-    t.string "keywords"
-  end
-
-  create_table "tops", force: true do |t|
-    t.string  "pic",                         null: false
-    t.string  "color"
-    t.string  "top_type"
-    t.integer "user_id"
-    t.string  "condition", default: "clean"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

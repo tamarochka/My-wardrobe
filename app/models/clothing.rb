@@ -5,12 +5,8 @@ class Clothing < ActiveRecord::Base
 
   paginates_per 6
 
-  def self.search(current_user, keywords)
-    if keywords
-      @clothings = current_user.clothings.where("color ILIKE ? OR clothing_type ilike ? OR clothing_style ilike ?", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%")
-    else
-      @clothings = current_user.clothings.all
-    end
+  def self.search(keywords)
+    where("to_tsvector(clothing_type || ' ' || color || ' ' || clothing_style) @@ plainto_tsquery(?)", keywords)
   end
 
     # def available_styles
@@ -27,5 +23,21 @@ class Clothing < ActiveRecord::Base
 
   def name
     "#{self.color} #{self.clothing_type} #{self.clothing_style}"
+  end
+
+  def wear!
+    update(condition: "dirty")
+  end
+
+  def self.clean
+    where(condition: "clean")
+  end
+
+  def self.random_top
+    where(clothing_type: "Top").order("RANDOM()").first
+  end
+
+  def self.random_bottom
+    where(clothing_type: "Bottom").order("RANDOM()").first
   end
 end

@@ -1,12 +1,23 @@
 <div class ="large-8 column">
   <div class="large-6 small-2 column" >
-    <% if params[:preview_button] %>
+    <% if !params[:preview_button] %>
     <p><a href = "/outfits/new">Go Back</a></p>
-      <div class ="row">
-            <img src= "<%= @outfit.top.image %>" width="200" height="200" />
-          </div>
-          <div class ="row"><img src= "<%= @outfit.bottom.image %>"width="200" height="200" />
-          </div>
+      <% if @outfit.top %>
+        <div class ="row">
+          <img src= "<%= @outfit.top.image %>" width="200" height="200" />
+        </div>
+      <% else %>
+        <p>No clean tops available.</p>
+      <% end %>
+
+      <% if @outfit.bottom %>
+        <div class ="row">
+          <img src= "<%= @outfit.bottom.image %>"width="200" height="200" />
+        </div>
+      <% else %>
+        <p>No clean bottoms available.</p>
+      <% end %>
+
     <%else%>
       <div class =-"row">
         <img src= "<%= @outfit.top.image %>" width="200" height="200" />

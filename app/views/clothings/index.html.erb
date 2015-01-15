@@ -1,7 +1,7 @@
     <% @clothings.each do |clothing|%>
 
     <div class="large-4 small-6 columns">
-      <img src="<%= clothing.image %>" width="200" height="200"/></a>
+      <%= image_tag clothing.image %>
 
       <div class="panel">
         <h5><%= link_to clothing.clothing_style, clothing %></h5>

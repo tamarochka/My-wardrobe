@@ -10,7 +10,10 @@ FactoryGirl.define do
   factory :top do
     top_type 'Sweater'
     color 'white'
-    pic File.join(Rails.root, "spec/support/images/example.jpg")
+    pic do
+      Rack::Test::UploadedFile.new(
+        Rails.root.join("spec/support/images/example.jpg"))
+    end
   end
 
   factory :bottom do

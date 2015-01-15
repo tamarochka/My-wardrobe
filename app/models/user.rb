@@ -4,12 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  has_many :tops
   has_many :clothings
+  has_many :outfits
 
-  def bottoms
-    clothes.where(type: "bottom")
-  end
 
 end

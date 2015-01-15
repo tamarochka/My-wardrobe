@@ -2,8 +2,13 @@ class ClothingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @clothings = Clothing.search(current_user, params[:keywords]).page(params[:pagw])
-      @clothings.page(params[:page])
+    if params[:keywords]
+      @clothings = current_user.clothings.search(params[:keywords])
+    else
+      @clothings = current_user.clothings
+    end
+
+    @clothings = @clothings.page(params[:page])
   end
 
   def new
@@ -44,7 +49,7 @@ class ClothingsController < ApplicationController
 
   def destroy
     @clothing = current_user.clothings.find(params[:id])
-    @bclothing.destroy
+    @clothing.destroy
     redirect_to clothings_path
   end
 
