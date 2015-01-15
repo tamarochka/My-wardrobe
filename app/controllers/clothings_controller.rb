@@ -2,11 +2,12 @@ class ClothingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @clothings = current_user.clothings.all.page(params[:page]) # limit to 20 or paginate
+      @clothings = Clothing.search(current_user, params[:keywords]).page(params[:pagw])
+      @clothings.page(params[:page])
   end
 
   def new
-    @clothing = Clothing.new #Bottom.new
+    @clothing = Clothing.new
   end
 
   def create

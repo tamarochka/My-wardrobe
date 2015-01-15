@@ -5,6 +5,14 @@ class Clothing < ActiveRecord::Base
 
   paginates_per 6
 
+  def self.search(current_user, keywords)
+    if keywords
+      @clothings = current_user.clothings.where("color ILIKE ? OR clothing_type ilike ? OR clothing_style ilike ?", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%")
+    else
+      @clothings = current_user.clothings.all
+    end
+  end
+
     # def available_styles
     # if type == "bottom"
     #   ["jeans", "shorts", "pants", "skirt"]
