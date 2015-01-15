@@ -31,6 +31,7 @@ gem 'devise'
 gem "fog"
 gem "pg"
 gem 'kaminari'
+gem "mini_magick"
 
 
 gem 'rspec-rails', group: [:development, :test]

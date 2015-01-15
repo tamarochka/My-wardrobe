@@ -2,13 +2,13 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
 
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
-  # process :resize_to_fit => [500, 500]
-  #
-  # version :thumb do
-  #   process :resize_to_fill => [300,300]
-  # end
+  process :resize_to_fit => [500, 500]
+
+  version :thumb do
+    process :resize_to_fill => [300,300]
+  end
 
 
   if Rails.env.production? || Rails.env.development?
