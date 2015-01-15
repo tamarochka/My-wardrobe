@@ -9,18 +9,20 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :clothing_type %>
-    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true %>
-  <p>
+    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true, :id => "type_selector" %>
+  </p>
+  <p id =1 class="hidden_option">
+    <%= f.label :clothing_style, name = "Top Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Top Blouse T-Shirt Sweater Shirt Cardigan Blazer]), include_blank: true %>
+  </p>
 
-  <p>
-    <%= f.label :clothing_style %>
-    <%= f.select :clothing_style, options_for_select(%w[Top Blouse Jeans Shorts Skirt Sweater]), include_blank: true %>
-  <p>
-
+  <p id =2 class="hidden_option">
+    <%= f.label :clothing_style, name = "Bottom Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Shorts Capris]), include_blank: true %>
+  </p>
   <p>
       <%= f.label :color %>
       <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>
-
   </p>
 
   <p>
@@ -37,3 +39,29 @@
   <p><%= f.submit %></p>
   <% end %>
 </div>
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $("#clothing_clothing_type").change(function(){
+      if($("#clothing_clothing_type").val() == "Top"){
+        var $pants = $("#2")
+        if ($pants) {
+          $pants.hide();
+        $("#1").fadeIn('fast');
+        }
+      }
+    });
+  });
+<%end%>
+<%= javascript_tag do %>
+$(document).ready(function(){
+  $("#clothing_clothing_type").change(function(){
+    if($("#clothing_clothing_type").val() == "Bottom"){
+      var $tops = $("#1")
+      if ($tops) {
+        $tops.hide();
+        $("#2").fadeIn('fast');
+      }
+    }
+  });
+});
+<%end%>

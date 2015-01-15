@@ -16,3 +16,6 @@
 
  */
 /*= require foundation */
+.hidden_option{
+  display: none;
+}
