@@ -51,13 +51,13 @@ class OutfitsController < ApplicationController
   end
 
   def rand_top
-    offset = rand(Top.count)
-    rand_top = Top.offset(offset).first
+    offset = rand(Clothing.where(:clothing_type => "Top").count)
+    rand_top = Clothing.where(:clothing_type => "Top").offset(offset).first
   end
 
   def rand_bottom
-    offset = rand(Bottom.count)
-    rand_bottom = Bottom.offset(offset).first
+    offset = rand(Clothing.where(:clothing_type => "Bottom").count)
+    rand_bottom = Clothing.where(:clothing_type => "Bottom").offset(offset).first
   end
 
   def generate_clean_top

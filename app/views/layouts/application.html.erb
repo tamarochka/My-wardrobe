@@ -32,12 +32,6 @@
             <section class="top-bar-section">
 
               <ul class="left">
-              <li><% form_tag searches_path, :method => :get do %>
-    <p id="search_header">
-        <%= text_field_tag 'q', params[:q], {:size => 40} %>
-        <%= submit_tag 'Search for Shops', :name => nil %>
-        </p>
-    <% end %></li>
                 <li class="divider"></li>
                 <li class="has-dropdown">
                   <a href="#">My Closet</a>
@@ -54,13 +48,7 @@
                   <li><a href="/outfits/new">New Outfit</a></li>
                 </ul></li>
                 <li class="divider"></li>
-                <li class="has-dropdown">
-                  <a href="#">New Item</a>
-                  <ul class="dropdown">
-                    <li><a href="/bottoms/new">New Bottom</a></li>
-                    <li><a href="/tops/new">New Top</a></li>
-                  </ul>
-                </li>
+                <li><%= link_to "Add New Clothing", new_clothing_path %> <li>
               </ul>
             </section>
           </nav>
@@ -84,7 +72,7 @@
 
           <div class="search">
               <p>
-                <%= form_tag searches_path, :method => :get do %>
+                <%= form_tag clothings_path, :method => :get do %>
                     <%= text_field_tag 'keywords', params[:keywords] %>
                     <%= submit_tag "Search", class: "small button" %>
                   <%end%>

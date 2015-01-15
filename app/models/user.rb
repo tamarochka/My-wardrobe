@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
 
   has_many :tops
-  has_many :bottoms
-  
+  has_many :clothings
+
+  def bottoms
+    clothes.where(type: "bottom")
+  end
+
 end

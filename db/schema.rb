@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227041821) do
+ActiveRecord::Schema.define(version: 20150114184951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20141227041821) do
     t.string  "color"
     t.integer "user_id"
     t.string  "condition",   default: "clean"
+  end
+
+  create_table "clothings", force: true do |t|
+    t.string   "clothing_type",                    null: false
+    t.string   "color"
+    t.string   "weather"
+    t.string   "image"
+    t.integer  "user_id"
+    t.string   "condition",      default: "clean"
+    t.string   "clothing_style"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "outfits", force: true do |t|
