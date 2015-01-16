@@ -1,6 +1,6 @@
 <% if @clothing.errors.any? %>
   <% @clothing.errors.full_messages.each do |msg| %>
-    <%= msg %>
+    <%= msg %></br>
   <% end %>
 <% end %>
 
@@ -46,7 +46,7 @@
         var $pants = $("#2")
         if ($pants) {
           $pants.hide();
-        $("#1").fadeIn('fast');
+        $("#1").fadeIn('slow');
         }
       }
     });
@@ -59,7 +59,7 @@ $(document).ready(function(){
       var $tops = $("#1")
       if ($tops) {
         $tops.hide();
-        $("#2").fadeIn('fast');
+        $("#2").fadeIn('slow');
       }
     }
   });

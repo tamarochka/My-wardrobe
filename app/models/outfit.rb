@@ -7,16 +7,29 @@ class Outfit < ActiveRecord::Base
 
   paginates_per 6
 
-  def self.generate_random
-    Outfit.new(top: clean_top, bottom: clean_bottom)
+  def self.generate_random_hot
+    Outfit.new(top: clean_top_hot, bottom: clean_bottom_hot)
   end
 
-  def self.clean_top
-    Clothing.clean.random_top
+  def self.generate_random_cold
+    Outfit.new(top: clean_top_cold, bottom: clean_bottom_cold)
   end
 
-  def self.clean_bottom
-    Clothing.clean.random_bottom
+
+  def self.clean_top_cold
+    Clothing.clean.cold.random_top
+  end
+
+  def self.clean_bottom_cold
+    Clothing.clean.cold.random_bottom
+  end
+
+  def self.clean_top_hot
+    Clothing.clean.hot.random_top
+  end
+
+  def self.clean_bottom_hot
+    Clothing.clean.hot.random_bottom
   end
 
   def wear_outfit

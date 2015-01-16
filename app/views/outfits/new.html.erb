@@ -4,7 +4,7 @@
     <p><a href = "/outfits/new">Go Back</a></p>
       <% if @outfit.top %>
         <div class ="row">
-          <img src= "<%= @outfit.top.image %>" width="200" height="200" />
+          <%= image_tag @outfit.top.image %>
         </div>
       <% else %>
         <p>No clean tops available.</p>
@@ -12,19 +12,19 @@
 
       <% if @outfit.bottom %>
         <div class ="row">
-          <img src= "<%= @outfit.bottom.image %>"width="200" height="200" />
+          <%= image_tag @outfit.bottom.image %>
         </div>
       <% else %>
         <p>No clean bottoms available.</p>
       <% end %>
-
+      <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a>
     <%else%>
-      <div class =-"row">
-        <img src= "<%= @outfit.top.image %>" width="200" height="200" />
+      <div class ="row">
+        <%= image_tag @outfit.top.image %>
       </div>
-      <div class ="row"><img src= "<%= @outfit.bottom.image %>"width="200" height="200" />
+      <div class ="row"><%= image_tag @outfit.bottom.image %>
       </div>
-    <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a>
+    <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a></div>
 <% end %>
     </div>
   </div>

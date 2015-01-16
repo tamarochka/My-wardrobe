@@ -6,7 +6,12 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    @outfit = Outfit.generate_random
+    if [11,12,1,2,3,4].include?(Date.today.month)
+      @outfit = Outfit.generate_random_cold
+    else
+      @outfit = Outfit.generate_random_hot
+    end
+
   end
 
   def create

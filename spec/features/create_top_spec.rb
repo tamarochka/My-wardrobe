@@ -13,16 +13,16 @@ feature 'User adds a new top', %Q{
 
   scenario 'with valid data' do
 
-    top = FactoryGirl.build(:top)
-
-    visit '/tops/new'
-    select 'Sweater', from: 'Top type'
+    visit '/clothings/new'
+    select 'Top', from: 'Clothing type'
+    select 'Sweater', from: 'Top Type'
     select 'White', from: 'Color'
-    attach_file "Pic", File.join(Rails.root, "spec/support/images/example.jpg")
-    click_button 'Create Top'
+    select 'Any', from: 'Weather'
+    attach_file "Image", File.join(Rails.root, "spec/support/images/example.jpg")
+    click_button 'Create Clothing'
 
-    expect(page).to have_content 'New top successfully added'
-    expect(page).to have_content top.top_type
+    expect(page).to have_content 'New clothing was successfully added!'
+    expect(page).to have_content "Jeans"
     expect(page).to have_css("img[src*='uploads']")
 
   end
@@ -30,12 +30,13 @@ feature 'User adds a new top', %Q{
 
   scenario 'with invalid data' do
 
-    visit '/tops/new'
-    click_button 'Create Top'
+    visit '/clothings/new'
+    click_button 'Create Clothing'
 
     expect(page).to have_content "There were problems processing your order!"
-    expect(page).to have_content "Top type can't be blank"
-    expect(page).to have_content "Pic can't be blank"
+    expect(page).to have_content "Clothing type can't be blank"
+    expect(page).to have_content "Clothing style can't be blank"
+    expect(page).to have_content "Image can't be blank"
     expect(page).to have_content "Color can't be blank"
 
   end
