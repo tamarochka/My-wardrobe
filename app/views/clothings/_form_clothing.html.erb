@@ -20,6 +20,12 @@
     <%= f.label :clothing_style, name = "Bottom Type" %>
     <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Shorts Capris]), include_blank: true %>
   </p>
+
+  <p id =3 class="hidden_option">
+    <%= f.label :clothing_style, name = "Shoes Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Boots Heels Flats Sandals Flip-]), include_blank: true %>
+  </p>
+
   <p>
       <%= f.label :color %>
       <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>
@@ -39,29 +45,3 @@
   <p><%= f.submit %></p>
   <% end %>
 </div>
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    $("#clothing_clothing_type").change(function(){
-      if($("#clothing_clothing_type").val() == "Top"){
-        var $pants = $("#2")
-        if ($pants) {
-          $pants.hide();
-        $("#1").fadeIn('slow');
-        }
-      }
-    });
-  });
-<%end%>
-<%= javascript_tag do %>
-$(document).ready(function(){
-  $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() == "Bottom"){
-      var $tops = $("#1")
-      if ($tops) {
-        $tops.hide();
-        $("#2").fadeIn('slow');
-      }
-    }
-  });
-});
-<%end%>
