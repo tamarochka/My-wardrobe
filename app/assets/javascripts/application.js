@@ -16,3 +16,46 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+
+$(document).ready(function(){
+  $("#clothing_clothing_type").change(function(){
+    if($("#clothing_clothing_type").val() == "Top"){
+      var $pants = $("#2")
+      var $shoes = $("#3")
+      if ($shoes || $pants) {
+        $pants.hide();
+        $shoes.hide();
+        $("#1").fadeIn('slow');
+      }
+    }
+  });
+});
+
+$(document).ready(function(){
+  $("#clothing_clothing_type").change(function(){
+    if($("#clothing_clothing_type").val() == "Bottom"){
+      var $tops = $("#1")
+      var $shoes = $("#3")
+      if ($tops || $shoes) {
+        $tops.hide();
+        $shoes.hide();
+        $("#2").fadeIn('slow');
+      }
+    }
+  });
+});
+
+$(document).ready(function(){
+  $("#clothing_clothing_type").change(function(){
+    if($("#clothing_clothing_type").val() == "Shoes"){
+      var $tops = $("#1")
+      var $pants = $("#2")
+      if ($tops || $pants) {
+        $tops.hide();
+        $pants.hide();
+        $("#3").fadeIn('slow');
+      }
+    }
+  });
+});

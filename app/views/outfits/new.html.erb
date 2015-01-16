@@ -1,44 +1,84 @@
-<div class ="large-8 column">
-  <div class="large-6 small-2 column" >
+
     <% if !params[:preview_button] %>
-    <p><a href = "/outfits/new">Go Back</a></p>
+    <div class ="row">
+      <div class ="large-6 column">
+    <a href = "/outfits/new">Go Back</a></p>
       <% if @outfit.top %>
-        <div class ="row">
-          <%= image_tag @outfit.top.image %>
-        </div>
+          <%= image_tag @outfit.top.image, size:"200x200" %>
       <% else %>
         <p>No clean tops available.</p>
       <% end %>
-
-      <% if @outfit.bottom %>
-        <div class ="row">
-          <%= image_tag @outfit.bottom.image %>
-        </div>
-      <% else %>
-        <p>No clean bottoms available.</p>
-      <% end %>
-      <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a>
-    <%else%>
-      <div class ="row">
-        <%= image_tag @outfit.top.image %>
-      </div>
-      <div class ="row"><%= image_tag @outfit.bottom.image %>
-      </div>
-    <div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a></div>
-<% end %>
     </div>
-  </div>
-  <div class ="large-6 small-2 column">
-      <% @outfit.errors.full_messages.each do |msg| %>
-          <%= msg %>
+
+    <div class ="large-6 column">
+        <% @outfit.errors.full_messages.each do |msg| %>
+        <%= msg %>
         <% end %>
         <%= form_for @outfit do |f| %>
-          <%= f.label :top_id, 'Top' %>
-          <%= f.collection_select(:top_id, Clothing.where(:clothing_type => "Top").all, :id, :name) %>
+        <%= f.label :top_id, 'Top' %>
+        <%= f.collection_select(:top_id, Clothing.where(:clothing_type => "Top").all, :id, :name) %>
 
-          <%= f.label :bottom_id, 'Bottom' %>
-          <%= f.collection_select(:bottom_id, Clothing.where(:clothing_type => "Bottom").all, :id, :name) %>
-          <%= f.submit 'Create Outfit', :class => "button small" %>
-          <%= f.submit 'Preview', :name => 'preview_button', :class => "button small" %>
+        <%= f.label :bottom_id, 'Bottom' %>
+        <%= f.collection_select(:bottom_id, Clothing.where(:clothing_type => "Bottom").all, :id, :name) %>
+
+        <%= f.label :shoe_pair_id, 'Shoes' %>
+        <%= f.collection_select(:shoe_pair_id, Clothing.where(:clothing_type => "Shoes").all, :id, :name) %>
+
+        <%= f.submit 'Create Outfit', :class => "button small" %>
+        <%= f.submit 'Preview', :name => 'preview_button', :class => "button small" %>
         <% end %>
-</div>
+        </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+    <% if @outfit.bottom %>
+      <%= image_tag @outfit.bottom.image, size:"200x200" %>
+
+    <% else %>
+      <p>No clean bottoms available.</p>
+    <% end %>
+    </div>
+
+    <div class="large-6 columns" >
+      <% if @outfit.shoe_pair %>
+        <%= image_tag @outfit.shoe_pair.image, size:"200x200" %>
+      <% else %>
+      <p>No shoes available.</p>
+      <% end %>
+    </div>
+    </div>
+
+    <%else%>
+    <div class ="row">
+      <div class="large-6 columns">
+        <%= image_tag @outfit.top.image, size:"200x200" %>
+      </div>
+      <div class ="large-6 column">
+        <% @outfit.errors.full_messages.each do |msg| %>
+        <%= msg %>
+        <% end %>
+        <%= form_for @outfit do |f| %>
+        <%= f.label :top_id, 'Top' %>
+        <%= f.collection_select(:top_id, Clothing.where(:clothing_type => "Top").all, :id, :name) %>
+
+        <%= f.label :bottom_id, 'Bottom' %>
+        <%= f.collection_select(:bottom_id, Clothing.where(:clothing_type => "Bottom").all, :id, :name) %>
+
+        <%= f.label :shoe_pair_id, 'Shoes' %>
+        <%= f.collection_select(:shoe_pair_id, Clothing.where(:clothing_type => "Shoes").all, :id, :name) %>
+
+        <%= f.submit 'Create Outfit', :class => "button small" %>
+        <%= f.submit 'Preview', :name => 'preview_button', :class => "button small" %>
+        <% end %>
+      </div>
+    </div>
+      <div class ="row">
+        <div class="large-6 columns">
+          <%= image_tag @outfit.bottom.image, size:"200x200"%>
+        </div>
+        <div class="large-6 columns">
+            <%= image_tag @outfit.shoe_pair.image, size:"200x200", align:"bottom" %>
+        </div>
+      </div>
+<% end %>
+<div class="row"><a href = "/outfits/new" class = "button small">Generate new!</a></div>

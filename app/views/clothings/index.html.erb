@@ -1,18 +1,18 @@
-    <% @clothings.each do |clothing|%>
+<% @clothings.each do |clothing|%>
 
-    <div class="large-4 small-6 columns">
-      <%= image_tag clothing.image.thumb %>
+<div class="large-4 small-6 columns">
+  <%= image_tag clothing.image.thumb %>
 
-      <div class="panel">
-        <h5><%= link_to clothing.clothing_style, clothing %></h5>
-        <h6 class="subheader">
-          <ul>
-            <li><%= link_to "Edit", edit_clothing_path(clothing) %></li>
-            <li><%= link_to 'Delete', clothing, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-          </ul>
-        </h6>
-      </div>
-    </div>
-    <% end %>
+  <div class="panel">
+    <h5><%= link_to clothing.clothing_style, clothing %></h5>
+    <h6 class="subheader">
+      <ul>
+        <li><%= link_to "Edit", edit_clothing_path(clothing) %></li>
+        <li><%= link_to 'Delete', clothing, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    </h6>
+  </div>
+</div>
+<% end %>
 
 <%= paginate @clothings %>

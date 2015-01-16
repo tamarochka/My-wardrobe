@@ -19,20 +19,28 @@ class Clothing < ActiveRecord::Base
     update(condition: "dirty")
   end
 
+  def self.dirty
+    where(condition: "dirty")
+  end
+
   def self.clean
     where(condition: "clean")
   end
 
   def self.cold
-    where(weather: "Cold")
+    where(weather: ["Cold", "Any"])
   end
 
   def self.hot
-    where(weather: "Hot")
+    where(weather: ["Hot", "Any"])
   end
 
   def self.random_top
     where(clothing_type: "Top").order("RANDOM()").first
+  end
+
+  def self.random_shoe_pair
+    where(clothing_type: "Shoes").order("RANDOM()").first
   end
 
   def self.random_bottom
