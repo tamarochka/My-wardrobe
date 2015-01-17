@@ -59,3 +59,10 @@ $(document).ready(function(){
     }
   });
 });
+
+$(document).ready(function(){
+$(".container :checkbox").click(function () {
+  if (displayShoes.checked) $(".hidden_option").show();
+  else $(".hidden_option").hide();
+  });
+});
