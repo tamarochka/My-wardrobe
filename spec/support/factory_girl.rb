@@ -7,19 +7,16 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
-  factory :top do
-    top_type 'Sweater'
-    color 'white'
-    pic do
-      Rack::Test::UploadedFile.new(
-        Rails.root.join("spec/support/images/example.jpg"))
-    end
-  end
+  factory :clothing do
+    clothing_type 'Top'
+    clothing_style "Sweater"
+    color "Blue"
+    weather "Any"
+    user
+    # image do Rack::Test::UploadedFile.new(
+    #   Rails.root.join("spec/support/images/example.jpg"))
 
-  factory :bottom do
-    bottom_type 'Shorts'
-    color 'Blue'
-    pic "public/uploads/bottom/example.jpg"
-  end
+    image File.new(File.join(::Rails.root.to_s, "spec/support/images", "example.jpg"))
+    end
 
 end

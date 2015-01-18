@@ -13,13 +13,13 @@ feature 'User creates outfit', %Q{
 
   scenario 'with valid data' do
 
-    bottom = FactoryGirl.create(:bottom)
-    top = FactoryGirl.create(:top)
+    bottom = FactoryGirl.create(:clothing)
+    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans")
 
     visit '/outfits/new'
 
-    expect(page).to have_content 'white sweater'
-    expect(page).to have_content "blue shorts"
+    expect(page).to have_content 'Blue Top Sweater'
+    expect(page).to have_content "Blue Bottom Jeans"
 
   end
 

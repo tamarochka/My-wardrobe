@@ -14,15 +14,17 @@ feature 'User adds a new top', %Q{
   scenario 'with valid data' do
 
     visit '/clothings/new'
+
     select 'Top', from: 'Clothing type'
-    select 'Sweater', from: 'Top Type'
-    select 'White', from: 'Color'
+    select 'Blue', from: 'Color'
     select 'Any', from: 'Weather'
     attach_file "Image", File.join(Rails.root, "spec/support/images/example.jpg")
+
+
     click_button 'Create Clothing'
 
     expect(page).to have_content 'New clothing was successfully added!'
-    expect(page).to have_content "Jeans"
+    expect(page).to have_content "Blue Top"
     expect(page).to have_css("img[src*='uploads']")
 
   end
@@ -35,7 +37,6 @@ feature 'User adds a new top', %Q{
 
     expect(page).to have_content "There were problems processing your order!"
     expect(page).to have_content "Clothing type can't be blank"
-    expect(page).to have_content "Clothing style can't be blank"
     expect(page).to have_content "Image can't be blank"
     expect(page).to have_content "Color can't be blank"
 
