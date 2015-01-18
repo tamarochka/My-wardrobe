@@ -7,6 +7,7 @@ resources :outfits
 resources :searches, only: [:index]
 resources :clothings
 
+get '/laundry' => 'clothings#laundry'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

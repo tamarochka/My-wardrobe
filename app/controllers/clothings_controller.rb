@@ -38,12 +38,18 @@ class ClothingsController < ApplicationController
 
   def update
     @clothing = current_user.clothings.find(params[:id])
-    if @clothing.update(clothing_params)
-      flash.now[:notice] = "Your item was updated"
-      redirect_to clothing_path(@clothing)
+    if params["commit"] == "Clean"
+      # binding.pry
+      @clothing.update(:condition => "clean")
+      redirect_to laundry_path
     else
-      flash.now[:notice] = "There were some problems"
-      render :edit
+      if @clothing.update(clothing_params)
+        flash.now[:notice] = "Your item was updated"
+        redirect_to clothing_path(@clothing)
+      else
+        flash.now[:notice] = "There were some problems"
+        render :edit
+      end
     end
   end
 
