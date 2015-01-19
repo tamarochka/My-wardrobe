@@ -20,9 +20,9 @@ $(function(){ $(document).foundation(); });
 
 $(document).ready(function(){
   $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() == "Top"){
-      var $pants = $("#2")
-      var $shoes = $("#3")
+    if($("#clothing_clothing_type").val() === "Top"){
+      var $pants = $("#2");
+      var $shoes = $("#3");
       if ($shoes || $pants) {
         $pants.hide();
         $shoes.hide();
@@ -34,9 +34,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() == "Bottom"){
-      var $tops = $("#1")
-      var $shoes = $("#3")
+    if($("#clothing_clothing_type").val() === "Bottom"){
+      var $tops = $("#1");
+      var $shoes = $("#3");
       if ($tops || $shoes) {
         $tops.hide();
         $shoes.hide();
@@ -48,9 +48,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() == "Shoes"){
-      var $tops = $("#1")
-      var $pants = $("#2")
+    if($("#clothing_clothing_type").val() === "Shoes"){
+      var $tops = $("#1");
+      var $pants = $("#2");
       if ($tops || $pants) {
         $tops.hide();
         $pants.hide();
