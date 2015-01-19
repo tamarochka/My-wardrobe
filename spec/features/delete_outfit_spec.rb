@@ -18,8 +18,8 @@ feature 'User deletes outfit', %Q{
 
     visit '/outfits/new'
 
-    expect(page).to have_content 'Blue Top Sweater'
-    expect(page).to have_content "Blue Bottom Jeans"
+    expect(page).to have_content 'Blue Sweater'
+    expect(page).to have_content "Blue Jeans"
 
     click_on "Create Outfit"
 

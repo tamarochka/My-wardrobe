@@ -21,7 +21,7 @@ feature 'User adds a new bottom', %Q{
       click_button 'Create Clothing'
 
       expect(page).to have_content 'New clothing was successfully added!'
-      expect(page).to have_content "White Bottom"
+      expect(page).to have_content "White"
       expect(page).to have_css("img[src*='uploads']")
 
     end

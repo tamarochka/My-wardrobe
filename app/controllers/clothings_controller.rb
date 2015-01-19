@@ -51,7 +51,31 @@ class ClothingsController < ApplicationController
         render :edit
       end
     end
+
+    # @clothing = current_user.clothings.find(params[:id])
+    #
+    # if @clothing.update(clothing_params)
+    #   flash[:notice] = "Your clothing was updated."
+    #
+    #   if cleaning_laundry?
+    #     redirect_to laundry_path
+    #   else
+    #     redirect_to clothing_path(@clothing)
+    #   end
+    # else
+    #   flash[:alert] = "Could not update the clothing."
+    #
+    #   if cleaning_laundry?
+    #     redirect_to laundry_path
+    #   else
+    #     render :edit
+    #   end
+    # end
   end
+
+  # def cleaning_laundry?
+  #   params[:commit] == "Clean"
+  # end
 
   def destroy
     @clothing = current_user.clothings.find(params[:id])

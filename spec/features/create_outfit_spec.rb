@@ -18,8 +18,8 @@ feature 'User creates outfit', %Q{
 
     visit '/outfits/new'
 
-    expect(page).to have_content 'Blue Top Sweater'
-    expect(page).to have_content "Blue Bottom Jeans"
+    expect(page).to have_content 'Blue Sweater'
+    expect(page).to have_content "Blue Jeans"
 
     click_on "Create Outfit"
 
@@ -36,7 +36,7 @@ feature 'User creates outfit', %Q{
     visit '/outfits/new'
 
     expect(page).to have_content 'No clean tops available.'
-    expect(page).to have_content "Blue Bottom Jeans"
+    expect(page).to have_content "Blue Jeans"
 
   end
 
@@ -48,7 +48,7 @@ feature 'User creates outfit', %Q{
     visit '/outfits/new'
 
     expect(page).to have_content 'No clean bottoms available.'
-    expect(page).to have_content 'Blue Top Sweater'
+    expect(page).to have_content 'Blue Sweater'
 
   end
 end

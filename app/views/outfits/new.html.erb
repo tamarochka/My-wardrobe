@@ -19,10 +19,13 @@
         <%= f.label :bottom_id, 'Bottom' %>
         <%= f.collection_select(:bottom_id, Clothing.where(:clothing_type => "Bottom").all, :id, :name) %>
 
-        <div class="hidden_option">
-          <%= f.label :shoe_pair_id, 'Shoes' %>
-          <%= f.collection_select(:shoe_pair_id, Clothing.where(:clothing_type => "Shoes").all, :id, :name) %>
+        <div class="shoe-options-container">
+          <div class="shoe-options">
+            <%= f.label :shoe_pair_id, 'Shoes' %>
+            <%= f.collection_select(:shoe_pair_id, Clothing.where(:clothing_type => "Shoes").all, :id, :name) %>
+          </div>
         </div>
+
         <br/>
 
         <%= f.submit 'Create Outfit', :class => "button small" %>
@@ -30,7 +33,7 @@
       <% end %>
     </div>
     <div class="large-6 column container">
-      <input type="checkbox" name="displayShoes" id="displayShoes"> Display Shoes<br>
+      <input type="checkbox" class="toggle-shoe-options" id="displayShoes"> Display Shoes<br>
     </div>
 
   </div>

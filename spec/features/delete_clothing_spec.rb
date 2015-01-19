@@ -18,7 +18,7 @@ feature "User deletes an existing clothing item", %{
       click_on "Delete"
 
       expect(page).to have_content "Your clothing item was deleted"
-      expect(page).not_to have_content "White Top Sweater"
+      expect(page).not_to have_content "White Sweater"
     end
 
   end

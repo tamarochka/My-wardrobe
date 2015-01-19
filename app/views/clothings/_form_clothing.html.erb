@@ -11,21 +11,24 @@
     <%= f.label :clothing_type %>
     <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true, :id => "type_selector" %>
   </p>
-  <p id =1 class="hidden_option">
+
+  <div class="style-container">
+  </div>
+
+  <p class="top-styles">
     <%= f.label :clothing_style, name = "Top Type" %>
     <%= f.select :clothing_style, options_for_select(%w[Top Blouse T-Shirt Sweater Shirt Cardigan Blazer]), include_blank: true %>
   </p>
 
-  <p id =2 class="hidden_option">
+  <p class="bottom-styles">
     <%= f.label :clothing_style, name = "Bottom Type" %>
     <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Shorts Capris]), include_blank: true %>
   </p>
 
-  <p id =3 class="hidden_option">
+  <p class="shoe-styles">
     <%= f.label :clothing_style, name = "Shoes Type" %>
-    <%= f.select :clothing_style, options_for_select(%w[Boots Heels Flats Sandals Flip-]), include_blank: true %>
+    <%= f.select :clothing_style, options_for_select(%w[Boots Heels Flats Sandals Flip-Flops]), include_blank: true %>
   </p>
-
   <p>
       <%= f.label :color %>
       <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi]), include_blank: true %>

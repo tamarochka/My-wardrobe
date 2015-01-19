@@ -35,6 +35,7 @@ gem 'kaminari'
 gem "mini_magick"
 
 
+gem 'quiet_assets', group: [:development]
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]

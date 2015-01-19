@@ -12,7 +12,7 @@ class Clothing < ActiveRecord::Base
   end
 
   def name
-    "#{self.color} #{self.clothing_type} #{self.clothing_style}"
+    "#{self.color} #{self.clothing_style}"
   end
 
   def wear!

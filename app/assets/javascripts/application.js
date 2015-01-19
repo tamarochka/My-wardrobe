@@ -15,54 +15,34 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function() {
+  $(document).foundation();
 
+  var topStyles = $(".top-styles").remove();
+  var bottomStyles = $(".bottom-styles").remove();
+  var shoeStyles = $(".shoe-styles").remove();
 
-$(document).ready(function(){
-  $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() === "Top"){
-      var $pants = $("#2");
-      var $shoes = $("#3");
-      if ($shoes || $pants) {
-        $pants.hide();
-        $shoes.hide();
-        $("#1").fadeIn('slow');
-      }
+  $("#clothing_clothing_type").change(function(e) {
+    $(".style-container").empty();
+    var style = $("#clothing_clothing_type option:selected").text();
+
+    if (style === "Bottom") {
+      $(".style-container").append(bottomStyles);
+    } else if (style === "Top") {
+      $(".style-container").append(topStyles);
+    } else if (style === "Shoes") {
+      $(".style-container").append(shoeStyles);
     }
   });
-});
 
-$(document).ready(function(){
-  $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() === "Bottom"){
-      var $tops = $("#1");
-      var $shoes = $("#3");
-      if ($tops || $shoes) {
-        $tops.hide();
-        $shoes.hide();
-        $("#2").fadeIn('slow');
-      }
+  var shoeOptions = $(".shoe-options").remove();
+
+  $(".toggle-shoe-options").on("click", function() {
+    if ($(".shoe-options").length == 0) {
+      $(".shoe-options-container").append(shoeOptions);
+    } else {
+      shoeOptions = $(".shoe-options");
+      shoeOptions.remove();
     }
-  });
-});
-
-$(document).ready(function(){
-  $("#clothing_clothing_type").change(function(){
-    if($("#clothing_clothing_type").val() === "Shoes"){
-      var $tops = $("#1");
-      var $pants = $("#2");
-      if ($tops || $pants) {
-        $tops.hide();
-        $pants.hide();
-        $("#3").fadeIn('slow');
-      }
-    }
-  });
-});
-
-$(document).ready(function(){
-$(".container :checkbox").click(function () {
-  if (displayShoes.checked) $(".hidden_option").show();
-  else $(".hidden_option").hide();
   });
 });

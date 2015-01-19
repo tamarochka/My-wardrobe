@@ -17,6 +17,6 @@ feature "User updates an existing clothing item", %{
       select "Black", from: "Color"
       click_on "Update"
       expect(page).to have_content "Your clothing item was updated"
-      expect(page).to have_content "Black Top Sweater"
+      expect(page).to have_content "Black Sweater"
     end
   end

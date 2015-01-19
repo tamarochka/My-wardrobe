@@ -23,7 +23,7 @@ feature 'User adds a new top', %Q{
     click_button 'Create Clothing'
 
     expect(page).to have_content 'New clothing was successfully added!'
-    expect(page).to have_content "Blue Top"
+    expect(page).to have_content "Blue"
     expect(page).to have_css("img[src*='uploads']")
 
   end
