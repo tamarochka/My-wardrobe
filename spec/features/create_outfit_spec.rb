@@ -28,16 +28,27 @@ feature 'User creates outfit', %Q{
   end
 
 
-  # scenario 'with invalid data' do
-  #
-  #   visit '/outfits/new'
-  #   click_button 'Create Bottom'
-  #
-  #   expect(page).to have_content "There were problems processing your order!"
-  #   expect(page).to have_content "Bottom type can't be blank"
-  #   expect(page).to have_content "Pic can't be blank"
-  #   expect(page).to have_content "Color can't be blank"
-  #
-  # end
+  scenario 'no tops availble' do
 
+    bottom = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
+    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
+
+    visit '/outfits/new'
+
+    expect(page).to have_content 'No clean tops available.'
+    expect(page).to have_content "Blue Bottom Jeans"
+
+  end
+
+  scenario 'no bottoms availble' do
+
+    bottom = FactoryGirl.create(:clothing)
+    top = FactoryGirl.create(:clothing)
+
+    visit '/outfits/new'
+
+    expect(page).to have_content 'No clean bottoms available.'
+    expect(page).to have_content 'Blue Top Sweater'
+
+  end
 end

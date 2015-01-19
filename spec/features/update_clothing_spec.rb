@@ -10,14 +10,13 @@ feature "User updates an existing clothing item", %{
       login_as(@user)
     end
 
-
     scenario "with valid data" do
-      clothing = FactoryGirl.create(:clothing, user_id: @user.id)
-      visit "/clothings/#{clothing.id}/edit"
+      @clothing = FactoryGirl.create(:clothing, user_id: @user.id)
+
+      visit "/clothings/#{@clothing.id}/edit"
       select "Black", from: "Color"
       click_on "Update"
       expect(page).to have_content "Your clothing item was updated"
       expect(page).to have_content "Black Top Sweater"
     end
-    
   end

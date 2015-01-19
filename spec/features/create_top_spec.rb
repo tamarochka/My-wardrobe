@@ -20,7 +20,6 @@ feature 'User adds a new top', %Q{
     select 'Any', from: 'Weather'
     attach_file "Image", File.join(Rails.root, "spec/support/images/example.jpg")
 
-
     click_button 'Create Clothing'
 
     expect(page).to have_content 'New clothing was successfully added!'
@@ -28,7 +27,6 @@ feature 'User adds a new top', %Q{
     expect(page).to have_css("img[src*='uploads']")
 
   end
-
 
   scenario 'with invalid data' do
 

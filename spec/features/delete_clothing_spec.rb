@@ -10,7 +10,6 @@ feature "User deletes an existing clothing item", %{
       login_as(@user)
     end
 
-
     scenario "clothing deleted" do
       @clothing = FactoryGirl.create(:clothing, user_id: @user.id)
 
