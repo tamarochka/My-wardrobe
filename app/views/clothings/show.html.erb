@@ -1,3 +1,5 @@
 
 <%= image_tag @clothing.image %>
 <p><%= @clothing.name %></p>
+<%= link_to "Edit", edit_clothing_path(@clothing) %>
+<%= link_to 'Delete', @clothing, method: :delete, data: { confirm: 'Are you sure?' } %>

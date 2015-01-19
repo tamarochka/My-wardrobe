@@ -13,10 +13,11 @@ FactoryGirl.define do
     color "Blue"
     weather "Any"
     user
-    # image do Rack::Test::UploadedFile.new(
-    #   Rails.root.join("spec/support/images/example.jpg"))
+    image do Rack::Test::UploadedFile.new(
+      Rails.root.join("spec/support/images/example.jpg"))
+    end
 
-    image File.new(File.join(::Rails.root.to_s, "spec/support/images", "example.jpg"))
+    # image File.new(File.join(::Rails.root.to_s, "spec/support/images", "example.jpg"))
     end
 
 end

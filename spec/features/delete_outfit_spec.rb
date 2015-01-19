@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'User creates outfit', %Q{
+feature 'User deletes outfit', %Q{
   As an authenticated user
-  I want to create outfit
-  So that I can see how my bottoms and tops come together
+  I want to delete outfit
+  So that it's not shown in my worn outfits
   } do
 
   before :each do
@@ -23,7 +23,9 @@ feature 'User creates outfit', %Q{
 
     click_on "Create Outfit"
 
-    expect(Outfit.count).to eq 1
+    click_on "Delete"
+
+    expect(page).to have_content "Outfit deleted"
 
   end
 

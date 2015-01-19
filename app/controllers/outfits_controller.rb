@@ -37,6 +37,7 @@ class OutfitsController < ApplicationController
   def destroy
     @outfit = current_user.outfits.find(params[:id])
     @outfit.destroy
+    flash[:notice]= "Outfit deleted"
     redirect_to outfits_path
   end
 

@@ -44,10 +44,10 @@ class ClothingsController < ApplicationController
       redirect_to laundry_path
     else
       if @clothing.update(clothing_params)
-        flash.now[:notice] = "Your item was updated"
+        flash[:notice] = "Your clothing item was updated"
         redirect_to clothing_path(@clothing)
       else
-        flash.now[:notice] = "There were some problems"
+        flash[:notice] = "There were some problems"
         render :edit
       end
     end
@@ -56,6 +56,7 @@ class ClothingsController < ApplicationController
   def destroy
     @clothing = current_user.clothings.find(params[:id])
     @clothing.destroy
+    flash[:notice] = "Your clothing item was deleted"
     redirect_to clothings_path
   end
 
