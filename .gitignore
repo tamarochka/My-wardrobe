@@ -10,3 +10,4 @@
 /tmp
 /public/uploads
 /.env
+/coverage
