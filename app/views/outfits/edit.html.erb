@@ -1,2 +1,8 @@
   <h5>Edit Outfit</h5>
-  <%= render "form_outfit"%>
+  <% if !params[:preview_button] %>
+  <%= render "form_outfit" %>
+
+  <%else%>
+  <%= render "form_outfit" %>
+
+  <% end %>

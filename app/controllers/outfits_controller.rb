@@ -2,7 +2,7 @@ class OutfitsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @outfits = Outfit.page(params[:page])
+    @outfits = Outfit.order("created_at DESC").page(params[:page])
   end
 
   def new
@@ -32,6 +32,16 @@ class OutfitsController < ApplicationController
 
   def edit
     @outfit = current_user.outfits.find(params[:id])
+  end
+
+  def update
+    @outfit = current_user.outfits.find(params[:id])
+    if !previewing? && @outfit.update(outfit_params)
+      flash[:notice] = "Your outfit was updated"
+      redirect_to outfit_path(@outfit)
+    else
+      render :edit
+    end
   end
 
   def destroy

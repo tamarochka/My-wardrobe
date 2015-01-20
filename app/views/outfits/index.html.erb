@@ -15,11 +15,13 @@
         <%end%>
 
       <div class="panel">
+        <h4><%= outfit.created_at.strftime('%A %B, %e') %></h4>
 
         <h6 class="subheader">
           <ul>
             <li><%= link_to "Edit", edit_outfit_path(outfit) %></li>
             <li><%= link_to 'Delete', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
           </ul>
         </h6>
       </div>

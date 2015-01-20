@@ -8,7 +8,7 @@ class ClothingsController < ApplicationController
       @clothings = current_user.clothings
     end
 
-    @clothings = @clothings.page(params[:page])
+    @clothings = @clothings.order("created_at DESC").page(params[:page])
   end
 
   def new
