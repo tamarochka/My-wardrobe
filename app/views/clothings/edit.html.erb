@@ -9,34 +9,46 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :clothing_type %>
-    <%= f.select :clothing_type, %w[Top Bottom Dress Shoes]%>
-    <p>
+    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), :id => "type_selector" %>
+  </p>
 
-      <p>
-        <%= f.label :clothing_style %>
-        <%= f.select :clothing_style, %w[Top Blouse Jeans Shorts Skirt Sweater] %>
-        <p>
+  <div class="style-container">
+  </div>
 
-          <p>
-            <%= f.label :color %>
-            <%= f.select :color, %w[White Black Red Brown Blue Yellow Pink Orange Gray Multi] %>
+  <p class="top-styles">
+    <%= f.label :clothing_style, name = "Top Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Top Blouse T-Shirt Sweater Shirt Cardigan Blazer])%>
+  </p>
 
-          </p>
+  <p class="bottom-styles">
+    <%= f.label :clothing_style, name = "Bottom Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Shorts Capris]) %>
+  </p>
 
-          <p>
-            <%= f.label :weather %>
-            <%= f.select :weather, %w[Cold Hot Any] %>
+  <p class="shoe-styles">
+    <%= f.label :clothing_style, name = "Shoes Type" %>
+    <%= f.select :clothing_style, options_for_select(%w[Boots Heels Flats Sandals Flip-Flops]) %>
+  </p>
+  <p>
+    <%= f.label :color %>
+    <%= f.select :color, options_for_select(%w[White Black Red Brown Blue Yellow Pink Orange Gray Multi])%>
+  </p>
 
-          </p>
+  <p>
+    <%= f.label :weather %>
+    <%= f.select :weather, options_for_select(%w[Cold Hot Any]) %>
 
-          <p>
-            <%= f.label :image %>
-            <%= f.file_field :image %>
+  </p>
 
-          </p>
-          <p><%= f.submit "Update" %></p>
-          <% end %>
-        </div>
+  <p>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+
+  </p>
+  <p><%= f.submit %></p>
+  <% end %>
+</div>
+
 
 
 
