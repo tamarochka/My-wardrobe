@@ -4,17 +4,15 @@
 
   <div class="large-4 small-3 columns">
     <%= image_tag clothing.image.thumb %>
-
-    <div class="panel">
       <h5><%= link_to clothing.clothing_style, clothing %></h5>
-      <h6 class="subheader">
-        <ul>
+      <h6>
+
           <%= form_for (clothing) do |f| %>
-              <%= f.submit "Clean", :class => "button tiny"%>
+              <%= f.submit "Mark as clean", :class => "button tiny"%>
             <% end %>
-        </ul>
+
       </h6>
-    </div>
+
   </div>
           <% end %>
 <%else%>

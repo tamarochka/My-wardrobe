@@ -4,16 +4,16 @@ class Clothing < ActiveRecord::Base
   has_many :outfits
 
   validates :clothing_type, :color, :image, presence: true
-  validate :validate_minimum_image_size
+  # validate :validate_minimum_image_size
 
   paginates_per 6
 
-  def validate_minimum_image_size
-    image = MiniMagick::Image.open(self.image.path)
-    unless image[:width] > 299 && image[:height] > 299
-      errors.add :image, "should be 300x300px minimum!"
-    end
-  end
+  # def validate_minimum_image_size
+  #     image = MiniMagick::Image.open(self.image.path)
+  #     unless image[:width] > 299 && image[:height] > 299
+  #       errors.add :image, "should be 300x300px minimum!"
+  #     end
+  # end
 
   def self.search(keywords)
     where("to_tsvector(clothing_type || ' ' || color || ' ' || clothing_style) @@ plainto_tsquery(?)", keywords)

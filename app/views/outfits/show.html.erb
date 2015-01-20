@@ -1,7 +1,10 @@
 <div class ="large-4 column">
   <div class="row"><%= image_tag @outfit.top.image %></div>
   <div class="row"><%= image_tag @outfit.bottom.image %></div>
-  <div class="row"><%= image_tag @outfit.shoe_pair.image %></div>
+  <% if @outfit.shoe_pair %>
+    <div class="row"><%= image_tag @outfit.shoe_pair.image %></div>
+  <%else%>
+  <%end%>
 
   <%= link_to "Edit", edit_outfit_path(@outfit) %>
   <%= link_to 'Delete', @outfit, method: :delete, data: { confirm: 'Are you sure?' } %>

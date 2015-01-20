@@ -36,10 +36,12 @@ $(function() {
   });
 
   var shoeOptions = $(".shoe-options").remove();
+  var shoes = $("#shoes").remove();
 
   $(".toggle-shoe-options").on("click", function() {
     if ($(".shoe-options").length == 0) {
       $(".shoe-options-container").append(shoeOptions);
+      $(".shoe-container").append(shoes);
     } else {
       shoeOptions = $(".shoe-options");
       shoeOptions.remove();
