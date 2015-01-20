@@ -9,7 +9,7 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :clothing_type %>
-    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Dress Shoes]), include_blank: true, :id => "type_selector" %>
+    <%= f.select :clothing_type, options_for_select(%w[Top Bottom Shoes]), include_blank: true, :id => "type_selector" %>
   </p>
 
   <div class="style-container">
@@ -22,7 +22,7 @@
 
   <p class="bottom-styles">
     <%= f.label :clothing_style, name = "Bottom Type" %>
-    <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Shorts Capris]), include_blank: true %>
+    <%= f.select :clothing_style, options_for_select(%w[Jeans Pants Skirt Shorts Capris]), include_blank: true %>
   </p>
 
   <p class="shoe-styles">

@@ -1,6 +1,6 @@
     <% @outfits.each do |outfit|%>
 
-    <div class="large-4 small-6 columns">
+    <div class="large-4 small-6 columns end">
       <a href = "/outfits/<%= outfit.id %>">
         <% if outfit.top.nil? %>
           <div class="row"><%= image_tag "default.jpeg" %></div>

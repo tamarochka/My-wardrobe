@@ -2,7 +2,7 @@
 <% if @clothings.any? %>
   <% @clothings.each do |clothing|%>
 
-  <div class="large-4 small-3 columns">
+  <div class="large-4 small-3 columns end">
     <%= image_tag clothing.image.thumb %>
       <h5><%= link_to clothing.clothing_style, clothing %></h5>
       <h6>

@@ -3,7 +3,7 @@
 <div class="large-8 columns">
   <p>
     <%= f.label :clothing_type %>
-    <%= f.select :clothing_type, %w[Top Bottom Dress Shoes], :id => "type_selector" %>
+    <%= f.select :clothing_type, %w[Top Bottom Shoes], :id => "type_selector" %>
   </p>
 
   <div class="style-container">
@@ -16,7 +16,7 @@
 
   <p class="bottom-styles">
     <%= f.label :clothing_style, name = "Bottom Type" %>
-    <%= f.select :clothing_style,%w[Jeans Pants Shorts Capris] %>
+    <%= f.select :clothing_style,%w[Jeans Pants Skirt Shorts Capris] %>
   </p>
 
   <p class="shoe-styles">

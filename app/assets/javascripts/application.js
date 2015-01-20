@@ -45,6 +45,7 @@ $(function() {
     } else {
       shoeOptions = $(".shoe-options");
       shoeOptions.remove();
+      shoes = $("#shoes").remove();
     }
   });
 });
