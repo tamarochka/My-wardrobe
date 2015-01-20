@@ -10,9 +10,11 @@ class Clothing < ActiveRecord::Base
   paginates_per 6
 
   def validate_minimum_image_size
-    image = MiniMagick::Image.open(self.image.path)
-    unless image[:width] > 299 && image[:height] > 299
-     errors.add :image, "should be 300x300px minimum!"
+    unless image.blank?
+      image = MiniMagick::Image.open(self.image.path.to_s)
+      unless image[:width] > 299 && image[:height] > 299
+        errors.add :image, "should be 300x300px minimum!"
+      end
     end
   end
 
