@@ -19,7 +19,44 @@
 .hidden_option{
   display: none;
 }
-/*.top-bar {
-background: #FD6B00;
-overflow: visible;
+.top-bar {
+  background: #6D939F;
+
+}
+
+.top-bar-section li a:not(.button) {
+  background: #6D939F !important;
+}
+
+.top-bar-section li a:not(.button):hover {
+  background: #6D939F !important;
+}
+
+.top-bar-section ul li.active > a {
+  background: #E48E5B !important;
+}
+
+.top-bar-section ul li.active > a:hover {
+  background: #E48E5B !important;
+}
+
+.top-bar-section li a:not(.button):hover {
+  background: #6D939F !important;
+  overflow: visible;
+}
+
+.button.small{
+  background: #FD7FA4;
+}
+
+.panel{
+  background: #F7F7F7 !important;
+  color: gray !important;
+}
+
+body {
+  color: gray !important;
+}
+/*a {
+  color: orange;
 }*/

@@ -13,15 +13,15 @@
     <% end %>
     <%= form_for @outfit do |f| %>
     <%= f.label :top_id, 'Top' %>
-    <%= f.collection_select(:top_id, Clothing.where(:clothing_type => "Top").all, :id, :name) %>
+    <%= f.collection_select(:top_id, current_user.clothings.where(:clothing_type => "Top").all, :id, :name) %>
 
     <%= f.label :bottom_id, 'Bottom' %>
-    <%= f.collection_select(:bottom_id, Clothing.where(:clothing_type => "Bottom").all, :id, :name) %>
+    <%= f.collection_select(:bottom_id, current_user.clothings.where(:clothing_type => "Bottom").all, :id, :name) %>
 
     <div class="shoe-options-container">
       <div class="shoe-options">
         <%= f.label :shoe_pair_id, 'Shoes' %>
-        <%= f.collection_select(:shoe_pair_id, Clothing.where(:clothing_type => "Shoes").all, :id, :name) %>
+        <%= f.collection_select(:shoe_pair_id, current_user.clothings.where(:clothing_type => "Shoes").all, :id, :name) %>
       </div>
     </div>
 
