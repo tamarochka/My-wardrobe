@@ -36,11 +36,12 @@ class OutfitsController < ApplicationController
 
   def update
     @outfit = current_user.outfits.find(params[:id])
-    if !previewing? && @outfit.update(outfit_params)
+    @outfit.update(outfit_params)
+    if previewing?
+      render :edit
+    else
       flash[:notice] = "Your outfit was updated"
       redirect_to outfit_path(@outfit)
-    else
-      render :edit
     end
   end
 

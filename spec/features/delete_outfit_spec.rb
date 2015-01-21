@@ -21,7 +21,7 @@ feature 'User deletes outfit', %Q{
     expect(page).to have_content 'Blue Sweater'
     expect(page).to have_content "Blue Jeans"
 
-    click_on "Create Outfit"
+    click_on "Save"
 
     click_on "Delete"
 

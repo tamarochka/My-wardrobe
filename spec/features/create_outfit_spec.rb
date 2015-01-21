@@ -21,7 +21,7 @@ feature 'User creates outfit', %Q{
     expect(page).to have_content 'Blue Sweater'
     expect(page).to have_content "Blue Jeans"
 
-    click_on "Create Outfit"
+    click_on "Save"
 
     expect(Outfit.count).to eq 1
 
