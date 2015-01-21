@@ -13,8 +13,8 @@ feature 'User creates outfit', %Q{
 
   scenario 'with valid data' do
 
-    bottom = FactoryGirl.create(:clothing)
-    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans")
+    bottom = FactoryGirl.create(:clothing, user: @user)
+    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
 
     visit '/outfits/new'
 
@@ -42,8 +42,8 @@ feature 'User creates outfit', %Q{
 
   scenario 'no bottoms availble' do
 
-    bottom = FactoryGirl.create(:clothing)
-    top = FactoryGirl.create(:clothing)
+    bottom = FactoryGirl.create(:clothing, user: @user)
+    top = FactoryGirl.create(:clothing, user: @user)
 
     visit '/outfits/new'
 
