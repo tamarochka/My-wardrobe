@@ -1,4 +1,4 @@
-<% @clothings = Clothing.dirty %>
+<% @clothings = Clothing.dirty.page(params[:page]) %>
 <% if @clothings.any? %>
   <% @clothings.each do |clothing|%>
 
@@ -10,11 +10,9 @@
           <%= form_for (clothing) do |f| %>
               <%= f.submit "Mark as clean", :class => "button tiny"%>
             <% end %>
-
       </h6>
-
   </div>
-          <% end %>
+  <% end %><%= paginate @clothings %>
 <%else%>
   <h5> There are no clothing in you laundry bag </h5>
 <%end%>

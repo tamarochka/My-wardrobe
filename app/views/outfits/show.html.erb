@@ -1,10 +1,20 @@
 <div class ="large-4 column">
-  <div class="row"><%= image_tag @outfit.top.image %></div>
-  <div class="row"><%= image_tag @outfit.bottom.image %></div>
-  <% if @outfit.shoe_pair %>
-    <div class="row"><%= image_tag @outfit.shoe_pair.image %></div>
-  <%else%>
+  <% if @outfit.top.nil? %>
+    <div class="row"><%= image_tag "default.jpg", size:"150x150" %></div>
+  <% else %>
+    <div class="row"><%= image_tag @outfit.top.image.thumb %></div>
   <%end%>
+
+  <% if @outfit.bottom.nil? %>
+    <div class="row"><%= image_tag "default.jpg", :title => "item was deleted" %></div>
+  <% else %>
+    <div class="row"><%= image_tag @outfit.bottom.image.thumb %></div>
+  <%end%>
+
+  <div class="panel">
+    <h5><%= @outfit.created_at.strftime('%A: %b, %e') %></h5>
+  </div>
 
   <%= link_to "Edit", edit_outfit_path(@outfit) %>
   <%= link_to 'Delete', @outfit, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -3,19 +3,19 @@
     <div class="large-4 small-6 columns end">
       <a href = "/outfits/<%= outfit.id %>">
         <% if outfit.top.nil? %>
-          <div class="row"><%= image_tag "default.jpeg" %></div>
+          <div class="row"><%= image_tag "default.jpg", size:"150x150" %></div>
         <% else %>
           <div class="row"><%= image_tag outfit.top.image.thumb %></div>
         <%end%>
 
         <% if outfit.bottom.nil? %>
-          <div class="row"><%= image_tag "default.jpeg" %></div>
+          <div class="row"><%= image_tag "default.jpg", :title => "item was deleted" %></div>
         <% else %>
         <div class="row"><%= image_tag outfit.bottom.image.thumb %></div>
         <%end%>
 
       <div class="panel">
-        <h4><%= outfit.created_at.strftime('%A %B, %e') %></h4>
+        <h5><%= @outfit.created_at.strftime('%A: %b, %e') %></h5>
 
         <h6 class="subheader">
           <ul>

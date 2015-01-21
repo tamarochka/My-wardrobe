@@ -3,7 +3,7 @@
     <% if @outfit.top %>
     <%= image_tag @outfit.top.image, size:"200x200" %>
     <% else %>
-    <p>No clean tops available.</p>
+    <p><h5>Time to clean your<a href="/laundry"> laundry? </a></h5></p>
     <% end %>
   </div>
 
@@ -42,7 +42,7 @@
     <%= image_tag @outfit.bottom.image, size:"200x200" %>
 
     <% else %>
-    <p>No clean bottoms available.</p>
+    <p><h5>Time to clean your <a href="/laundry"> laundry?</a></h5></p>
     <% end %>
   </div>
 

@@ -35,7 +35,7 @@ feature 'User creates outfit', %Q{
 
     visit '/outfits/new'
 
-    expect(page).to have_content 'No clean tops available.'
+    expect(page).to have_content "Time to clean your laundry?"
     expect(page).to have_content "Blue Jeans"
 
   end
@@ -47,7 +47,7 @@ feature 'User creates outfit', %Q{
 
     visit '/outfits/new'
 
-    expect(page).to have_content 'No clean bottoms available.'
+    expect(page).to have_content "Time to clean your laundry?"
     expect(page).to have_content 'Blue Sweater'
 
   end
