@@ -51,4 +51,15 @@ feature 'User creates outfit', %Q{
     expect(page).to have_content 'Blue Sweater'
 
   end
+
+  scenario 'clothing wrong season' do
+
+    bottom = FactoryGirl.create(:clothing, user: @user, weather: "Hot")
+    top = FactoryGirl.create(:clothing, user: @user, weather: "Hot")
+
+    visit '/outfits/new'
+
+    expect(page).to have_content "Time to clean your laundry?"
+
+  end
 end
