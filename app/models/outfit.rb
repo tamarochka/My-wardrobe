@@ -4,6 +4,8 @@ class Outfit < ActiveRecord::Base
   belongs_to :shoe_pair, :class_name => "Clothing"
   belongs_to :user
 
+  validates :bottom_id, presence: true
+  validates :top_id, presence: true
   after_save :wear_outfit
 
   paginates_per 6
@@ -45,4 +47,22 @@ class Outfit < ActiveRecord::Base
     top.wear!
     bottom.wear!
   end
+
+  def self.duplicate_check
+    outfits = self.where("created_at >= ?", Time.zone.now.beginning_of_day)
+
+    if outfits.count > 1
+
+      @outfit_prev = Outfit.new
+
+      outfits.each do |outfit|
+        if outfit.bottom_id == @outfit_prev.bottom_id and outfit.top_id == @outfit_prev.top_id
+          Outfit.find(@outfit_prev.id).destroy
+        end
+        @outfit_prev = outfit
+      end
+    end
+
+  end
+
 end

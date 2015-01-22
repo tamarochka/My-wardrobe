@@ -27,6 +27,27 @@ feature 'User creates outfit', %Q{
 
   end
 
+  scenario 'creates duplicate' do
+
+    bottom = FactoryGirl.create(:clothing, user: @user)
+    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
+
+    visit '/outfits/new'
+
+    expect(page).to have_content 'Blue Sweater'
+    expect(page).to have_content "Blue Jeans"
+
+    click_on "Save"
+
+    expect(Outfit.count).to eq 1
+
+    visit '/outfits/new'
+    click_on "Save"
+
+    expect(Outfit.count).to eq 1
+
+  end
+
 
   scenario 'no tops availble' do
 

@@ -2,6 +2,7 @@ class OutfitsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    Outfit.duplicate_check
     @outfits = Outfit.order("created_at DESC").page(params[:page])
   end
 
