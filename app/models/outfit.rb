@@ -10,37 +10,37 @@ class Outfit < ActiveRecord::Base
 
   paginates_per 6
 
-  def self.generate_random_hot
-    Outfit.new(top: clean_top_hot, bottom: clean_bottom_hot, shoe_pair: shoe_pair_hot)
+  def self.generate_random_hot(user)
+    Outfit.new(top: clean_top_hot(user), bottom: clean_bottom_hot(user), shoe_pair: shoe_pair_hot(user))
   end
 
-  def self.generate_random_cold
-    Outfit.new(top: clean_top_cold, bottom: clean_bottom_cold, shoe_pair: shoe_pair_cold)
+  def self.generate_random_cold(user)
+    Outfit.new(top: clean_top_cold(user), bottom: clean_bottom_cold(user), shoe_pair: shoe_pair_cold(user))
   end
 
 
-  def self.clean_top_cold
-    Clothing.clean.cold.random_top
+  def self.clean_top_cold(user)
+    Clothing.clean.cold.random_top(user)
   end
 
-  def self.clean_bottom_cold
-    Clothing.clean.cold.random_bottom
+  def self.clean_bottom_cold(user)
+    Clothing.clean.cold.random_bottom(user)
   end
 
-  def self.shoe_pair_cold
-    Clothing.cold.random_shoe_pair
+  def self.shoe_pair_cold(user)
+    Clothing.cold.random_shoe_pair(user)
   end
 
-  def self.clean_top_hot
-    Clothing.clean.hot.random_top
+  def self.clean_top_hot(user)
+    Clothing.clean.hot.random_top(user)
   end
 
-  def self.clean_bottom_hot
-    Clothing.clean.hot.random_bottom
+  def self.clean_bottom_hot(user)
+    Clothing.clean.hot.random_bottom(user)
   end
 
-  def self.shoe_pair_hot
-    Clothing.hot.random_shoe_pair
+  def self.shoe_pair_hot(user)
+    Clothing.hot.random_shoe_pair(user)
   end
 
   def wear_outfit
@@ -62,10 +62,6 @@ class Outfit < ActiveRecord::Base
         @outfit_prev = outfit
       end
     end
-  end
-
-  def shared?
-    shared == "yes"
   end
 
 end

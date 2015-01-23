@@ -46,15 +46,15 @@ class Clothing < ActiveRecord::Base
     where(weather: ["Hot", "Any"])
   end
 
-  def self.random_top
-    where(clothing_type: "Top").order("RANDOM()").first
+  def self.random_top(user)
+    where(clothing_type: "Top", user: user).order("RANDOM()").first
   end
 
-  def self.random_shoe_pair
-    where(clothing_type: "Shoes").order("RANDOM()").first
+  def self.random_shoe_pair(user)
+    where(clothing_type: "Shoes", user: user).order("RANDOM()").first
   end
 
-  def self.random_bottom
-    where(clothing_type: "Bottom").order("RANDOM()").first
+  def self.random_bottom(user)
+    where(clothing_type: "Bottom", user: user).order("RANDOM()").first
   end
 end

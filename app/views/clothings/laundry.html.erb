@@ -1,4 +1,4 @@
-<% @clothings = Clothing.dirty.page(params[:page]) %>
+<% @clothings = current_user.clothings.dirty.page(params[:page]) %>
 <% if @clothings.any? %>
   <% @clothings.each do |clothing|%>
 

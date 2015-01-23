@@ -7,9 +7,9 @@ class OutfitsController < ApplicationController
 
   def new
     if [11,12,1,2,3,4].include?(Date.today.month)
-      @outfit = Outfit.generate_random_cold
+      @outfit = Outfit.generate_random_cold(current_user)
     else
-      @outfit = Outfit.generate_random_hot
+      @outfit = Outfit.generate_random_hot(current_user)
     end
 
   end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-root 'clothings#index'
+root 'outfits#display_public'
   devise_for :users
 resources :bottoms
 resources :tops
