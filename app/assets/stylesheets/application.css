@@ -57,6 +57,10 @@
 body {
   color: gray !important;
 }
+
+.image-back {
+  background: "/closet-clean-out-3.jpg"
+}
 /*a {
   color: orange;
 }*/

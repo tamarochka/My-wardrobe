@@ -62,7 +62,10 @@ class Outfit < ActiveRecord::Base
         @outfit_prev = outfit
       end
     end
+  end
 
+  def public_link
+    "http://www.google.com"
   end
 
 end
