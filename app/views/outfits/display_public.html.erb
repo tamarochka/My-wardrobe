@@ -1,0 +1,39 @@
+<div id="fb-root"></div>
+
+    <% if !@outfits.nil? %>
+      <% @outfits.each do |outfit|%>
+
+      <div class="large-4 small-6 columns end">
+        <a href = "/outfits/<%= outfit.id %>">
+          <% if outfit.top.nil? %>
+            <div class="row"><%= image_tag "default.jpg", size:"150x150" %></div>
+          <% else %>
+            <div class="row"><%= image_tag outfit.top.image.thumb %></div>
+          <%end%>
+
+          <% if outfit.bottom.nil? %>
+            <div class="row"><%= image_tag "default.jpg", :title => "item was deleted" %></div>
+          <% else %>
+          <div class="row"><%= image_tag outfit.bottom.image.thumb %></div>
+          <%end%>
+
+        <div class="panel">
+          <h5><%= outfit.created_at.strftime('%A: %b, %e') %></h5>
+
+          <h6 class="subheader">
+            <% if current_user == outfit.user %>
+              <ul>
+                <li><%= link_to "Edit", edit_outfit_path(outfit) %></li>
+                <li><%= link_to 'Delete', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              </ul>
+              <%else%>
+            <%end%>
+          </h6>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <%= paginate @outfits %>
+<%else%>
+<h5>No shared outfits yet.  Would you like to share <%= link_to "yours?", outfits_path %></h5>
+<%end%>

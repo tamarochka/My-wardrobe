@@ -64,8 +64,8 @@ class Outfit < ActiveRecord::Base
     end
   end
 
-  def public_link
-    "http://www.google.com"
+  def shared?
+    shared == "yes"
   end
 
 end

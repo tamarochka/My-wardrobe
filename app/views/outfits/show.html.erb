@@ -14,9 +14,10 @@
   <div class="panel">
     <h5><%= @outfit.created_at.strftime('%A: %b, %e') %></h5>
   </div>
-
+ <%if current_user == @outfit.user %>
   <%= link_to "Edit", edit_outfit_path(@outfit), :class => "button small" %>
   <%= link_to 'Delete', @outfit, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button small" %>
-
-  <!-- <%= render_shareable :buttons=> ['pinterest', "facebook"], :url=> @outfit.public_link, :facebook=> {:send=> 'true' } %> -->
+<%else%>
+  <%= render_shareable :buttons=> ['pinterest', "facebook"], :url => "request.original_url", :facebook=> {:send=> 'true' } %>
+<%end%>
 </div>

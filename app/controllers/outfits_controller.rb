@@ -1,9 +1,8 @@
 class OutfitsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:display_public, :show]
 
   def index
-    Outfit.duplicate_check
-    @outfits = Outfit.order("created_at DESC").page(params[:page])
+    @outfits = current_user.outfits.order("created_at DESC").page(params[:page])
   end
 
   def new
@@ -22,13 +21,17 @@ class OutfitsController < ApplicationController
     if !previewing? && @outfit.save
       flash[:notice] = "Your outfit was saved!"
       redirect_to outfits_path
+      Outfit.duplicate_check
     else
       render :new
     end
   end
 
   def show
-    @outfit = current_user.outfits.find(params[:id])
+    @outfit = Outfit.find(params[:id])
+    if !@outfit.shared?
+      authanticate!
+    end
   end
 
   def edit
@@ -37,12 +40,17 @@ class OutfitsController < ApplicationController
 
   def update
     @outfit = current_user.outfits.find(params[:id])
-    @outfit.update(outfit_params)
-    if previewing?
-      render :edit
+    if params["commit"] == "Make public"
+      @outfit.update(:shared => "yes")
+      redirect_to display_public_path
     else
-      flash[:notice] = "Your outfit was updated"
-      redirect_to outfit_path(@outfit)
+      @outfit.update(outfit_params)
+      if previewing?
+        render :edit
+      else
+        flash[:notice] = "Your outfit was updated"
+        redirect_to outfit_path(@outfit)
+      end
     end
   end
 
@@ -52,6 +60,11 @@ class OutfitsController < ApplicationController
     flash[:notice]= "Outfit deleted"
     redirect_to outfits_path
   end
+
+  def display_public
+    @outfits = Outfit.where(shared: "yes").page(params[:page])
+  end
+
 
   private
 

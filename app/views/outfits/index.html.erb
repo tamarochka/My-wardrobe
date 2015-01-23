@@ -25,6 +25,9 @@
             <li><%= link_to 'Delete', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 
           </ul>
+          <%= form_for (outfit) do |f| %>
+          <%= f.submit "Make public", :class => "button small"%>
+          <% end %>
         </h6>
       </div>
     </div>
