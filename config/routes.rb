@@ -8,6 +8,7 @@ resources :searches, only: [:index]
 resources :clothings
 
 get '/laundry' => 'clothings#laundry'
+get '/shared' => 'outfits#display_public', as: "display_public"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
