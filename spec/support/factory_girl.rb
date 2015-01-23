@@ -12,7 +12,6 @@ FactoryGirl.define do
     clothing_style "Sweater"
     color "Blue"
     weather "Any"
-    user
     image do Rack::Test::UploadedFile.new(
       Rails.root.join("spec/support/images/example.jpg"))
     end

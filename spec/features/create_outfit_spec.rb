@@ -52,23 +52,21 @@ feature 'User creates outfit', %Q{
   scenario 'no tops availble' do
 
     bottom = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
-    top = FactoryGirl.create(:clothing, clothing_type: "Bottom", clothing_style: "Jeans", user: @user)
 
     visit '/outfits/new'
 
-    expect(page).to have_content "Time to clean your laundry?"
+    expect(page).to have_content "No tops available"
     expect(page).to have_content "Blue Jeans"
 
   end
 
   scenario 'no bottoms availble' do
 
-    bottom = FactoryGirl.create(:clothing, user: @user)
     top = FactoryGirl.create(:clothing, user: @user)
 
     visit '/outfits/new'
 
-    expect(page).to have_content "Time to clean your laundry?"
+    expect(page).to have_content "No bottoms available"
     expect(page).to have_content 'Blue Sweater'
 
   end
@@ -80,7 +78,8 @@ feature 'User creates outfit', %Q{
 
     visit '/outfits/new'
 
-    expect(page).to have_content "Time to clean your laundry?"
+    expect(page).to have_content "No tops available"
+    expect(page).to have_content "No bottoms available"
 
   end
 end
