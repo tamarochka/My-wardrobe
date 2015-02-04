@@ -1,6 +1,6 @@
 <% @clothings.each do |clothing|%>
 <div class="large-4 small-6 columns end">
-    <%= image_tag clothing.image.thumb %>
+  <%= link_to image_tag(clothing.image), clothing  %>
 
     <div class="panel">
       <h5><%= link_to clothing.name, clothing %></h5>

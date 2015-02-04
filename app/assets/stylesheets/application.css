@@ -61,6 +61,15 @@ body {
 .image-back {
   background: "/closet-clean-out-3.jpg"
 }
+
+a img {
+  opacity: 1;
+}
+
+
+a img:hover {
+  opacity: 0.5;
+}
 /*a {
   color: orange;
 }*/
