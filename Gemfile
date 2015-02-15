@@ -43,7 +43,6 @@ gem 'factory_girl', group: [:development, :test]
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'shareable'
 
-
 group :test do
   gem 'coveralls', require: false
 end

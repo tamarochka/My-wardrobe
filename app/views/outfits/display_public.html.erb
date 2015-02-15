@@ -8,13 +8,13 @@
           <% if outfit.top.nil? %>
             <div class="row"><%= image_tag "default.jpg", size:"150x150" %></div>
           <% else %>
-            <div class="row"><%= image_tag outfit.top.image, size:"200x200" %></div>
+            <div class="row"><%= image_tag outfit.top.clothing_img, size:"200x200" %></div>
           <%end%>
 
           <% if outfit.bottom.nil? %>
             <div class="row"><%= image_tag "default.jpg", :title => "item was deleted" %></div>
           <% else %>
-          <div class="row"><%= image_tag outfit.bottom.image, size:"200x200" %></div>
+          <div class="row"><%= image_tag outfit.bottom.clothing_img, size:"200x200" %></div>
           <%end%>
 
         <div class="panel">
