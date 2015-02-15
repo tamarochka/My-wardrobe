@@ -57,4 +57,10 @@ class Clothing < ActiveRecord::Base
   def self.random_bottom(user)
     where(clothing_type: "Bottom", user: user).order("RANDOM()").first
   end
+
+  def clothing_img
+    Rails.cache.fetch([:clothing, id, :image], expires_in: 5.minutes) do
+      image
+    end
+  end
 end
