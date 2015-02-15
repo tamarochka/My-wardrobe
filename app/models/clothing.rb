@@ -8,6 +8,11 @@ class Clothing < ActiveRecord::Base
   validate :validate_minimum_image_size, on: :create
 
   paginates_per 6
+  after_update :flush_image_cache
+
+  def flush_image_cache
+    Rails.cache.delete([:clothing, id, :image]) if image_changed?
+  end
 
   def validate_minimum_image_size
     unless image.blank?
@@ -56,5 +61,11 @@ class Clothing < ActiveRecord::Base
 
   def self.random_bottom(user)
     where(clothing_type: "Bottom", user: user).order("RANDOM()").first
+  end
+
+  def clothing_img
+    Rails.cache.fetch([:clothing, id, :image], expires_in: 5.minutes) do
+      image
+    end
   end
 end
