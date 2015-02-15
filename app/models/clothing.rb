@@ -8,6 +8,11 @@ class Clothing < ActiveRecord::Base
   validate :validate_minimum_image_size, on: :create
 
   paginates_per 6
+  after_update :flush_image_cache
+
+  def flush_image_cache
+    Rails.cache.delete([:clothing, id, :image]) if image_changed?
+  end
 
   def validate_minimum_image_size
     unless image.blank?
